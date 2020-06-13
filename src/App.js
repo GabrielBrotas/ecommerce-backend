@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+// Screens
+import Navbar from './screens/partials/navbar'
+import Footer from './screens/partials/footer'
+import HomeScreen from './screens/HomeScreen'
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="grid-container">
+      <header>
+
       </header>
+
+      
+      <HomeScreen />
+
+      <Footer />
+      <footer>
+
+      </footer>
     </div>
   );
+
 }
 
 export default App;
