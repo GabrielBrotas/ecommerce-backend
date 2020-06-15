@@ -269,9 +269,9 @@ function Products() {
 
                 </div>
 
-                <div className="button">
-                    <button> Prev </button>
-                    <button> Next </button>
+                <div className="triangle-buttons">
+                    <div className="triangle-prev"></div>
+                    <div className="triangle-next"></div>
                 </div>
             </div>
 

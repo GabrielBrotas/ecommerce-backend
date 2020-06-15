@@ -67,8 +67,9 @@ function shoppingCart() {
         <div className="buy-items-content">
 
             <h3>Finalizar Compra</h3>
+            <h4>Qtd items: 3</h4>
             <h4>Preço Final: R$ 180,00</h4>
-            <button>Comprar Agora</button>
+            <button className="button-buy">Comprar Agora</button>
 
         </div>
 

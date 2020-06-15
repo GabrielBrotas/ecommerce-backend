@@ -190,8 +190,8 @@ function HomePage() {
 
                 </div>
 
-                <div className="button">
-                    <button>See More</button>
+                <div>
+                    <button className="button">See More</button>
                 </div>
             </div>
             

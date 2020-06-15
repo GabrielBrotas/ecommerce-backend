@@ -56,11 +56,12 @@ function Navbar(){
                     <div className="shopping-car">
                         
                         <Link to="/cart"><img src="/images/supermercado.png" alt="shopping car"></img></Link>
-
+                        
+                        <Link to="/cart">
                         <div className="items-in-car">
                             1
                         </div>
-
+                        </Link>
                     </div>
                     
                 </ul>

@@ -61,3 +61,30 @@
 .button {
     margin: 2rem;
 }
+
+.triangle-buttons{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-self: center;
+}
+
+.triangle-next{
+    width: 0; 
+    height: 0; 
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 25px solid white;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.triangle-prev{
+    width: 0; 
+    height: 0; 
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent; 
+    border-right:25px solid white; 
+    margin-right: 2rem;
+    cursor: pointer;
+}
