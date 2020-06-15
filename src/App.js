@@ -1,27 +1,35 @@
 import React from 'react';
 
-// Screens
-import Navbar from './screens/partials/navbar'
-import Footer from './screens/partials/footer'
-import HomeScreen from './screens/HomeScreen'
+// libraries
+import {BrowserRouter, Route} from 'react-router-dom'
 
+// Screens
+import Navbar from './pages/partials/navbar'
+import Footer from './pages/partials/footer'
+import HomePage from './pages/home'
+import Products from './pages/products'
+import Games from './pages/games'
+import Product from './pages/product'
+import ShoppingCart from './pages/shoppingCart'
 
 function App() {
 
   return (
-    <div className="grid-container">
-      <header>
-
-      </header>
-
+    <BrowserRouter>
       
-      <HomeScreen />
+      <Navbar />
 
+        <div className="content">
+          <Route path="/Cart" component={ShoppingCart}/>
+          <Route path="/product" component={Product}/>
+          <Route path="/games" component={Games}/>
+          <Route path="/products" component={Products}/>
+          <Route path="/" exact={true} component={HomePage}/>
+        </div>
+      
       <Footer />
-      <footer>
 
-      </footer>
-    </div>
+    </BrowserRouter>
   );
 
 }

@@ -1,0 +1,77 @@
+
+/* Main */
+.main{
+    width: 100%;
+    max-width: 1500px;
+}
+
+
+/* filter */
+
+.product-categories{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: azure;
+    margin-bottom: 3rem;
+}
+
+.category{
+    width: 25%;
+    transition: all .2s ease-in-out;
+}
+
+.category:hover{
+    background-color: #e3eaf9;
+    color:#282d65;
+    cursor: pointer;
+    border-bottom: groove #067eca;
+}
+/* mais vendidos box */
+
+.all-products{
+    bottom: 5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.all-products h2 {
+    color: #f7f6f6
+}
+
+.box-products{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.product-input{
+    font-weight: bold;
+    color: white
+}
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 2.5rem;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.product-img img{
+    height: 220px;
+    width: 275px;
+    transition: .3s ease-in-out;
+}
+
+.product-img img:hover{
+    
+    transform: scale(1.1);
+}
+
+.product-name, .product-price {
+    margin-bottom: 1rem;
+}

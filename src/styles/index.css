@@ -1,0 +1,183 @@
+
+/* Main */
+.main{
+    width: 100%;
+    max-width: 1500px;
+}
+
+/* main carousel */
+.carousel-container{
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carousel-slide{
+    display: flex;
+    position: relative;
+    opacity: .8;
+}
+
+.carousel-slide img {
+    width: 100%;
+
+}
+
+.arrows-div{
+    display: flex;
+    position: absolute;
+    width: 100%;
+    max-width: 1500px;
+    justify-content: space-between;
+}
+
+.seta-right{
+    margin-left: auto;
+    padding: 12px;
+    background-color: #fbfef9;
+    opacity: .8;
+    margin-right: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.seta-right:hover, .seta-left:hover{
+    opacity: 1;
+}
+
+.seta-left{
+    margin-right: auto;
+    padding: 12px;
+    background-color: #fbfef9;
+    opacity: .8;
+    margin-left: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.box-buy {
+    position: relative;
+    background-color: #067eca;
+    width: 40%;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    bottom: 10rem;
+    border-radius: 20rem;
+    cursor: pointer;
+    transition: .2s ease-out
+}
+
+.box-buy:hover {
+    background-color: #282d65;
+    color: white;
+}
+@media screen and (max-width: 575px) {
+    .box-buy {
+        bottom: 7rem;
+    }
+}
+
+.box-buy p {
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+
+/* Main produtos destaque  */
+.products-content{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    bottom: 5rem;
+}
+
+.products-highligth {
+    width: 60%;
+}
+.products-highligth p, h2{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    
+}
+
+.product-one-background, .product-two-background{
+    width: 40%;
+}
+.product-one, .product-two {
+    display: flex;
+    flex:1;
+    align-items: flex-start;
+    background-image: linear-gradient(#FBFEF9, #5254a7);
+    max-width: 1500px;
+    margin: 25px;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    flex-wrap: wrap;
+    contain: content;
+}
+
+.product-one:hover, .product-two:hover {
+    transition: .4s ease-in-out;
+    transform: scale(1.1);
+}
+
+
+/* mais vendidos box */
+
+.bests-sellers-content{
+    position: relative;
+    bottom: 5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    background-image: linear-gradient(#282d65, #5254a7);
+}
+
+.bests-sellers-content h2 {
+    color: #f7f6f6
+}
+
+.box-best-products{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.product-bestseller-content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2.5rem;
+}
+
+.product-bestseller-img img{
+    height: 367px;
+    width: 275px;
+    cursor: pointer;
+}
+
+.product-bestseller-img{
+    transition: .4s ease-in-out;
+}
+.product-bestseller-img:hover {
+    
+    transform: scale(1.1);
+}
+
+
+.product-name{
+    text-align: center;
+}
+
+.button {
+    margin: 2rem;
+}

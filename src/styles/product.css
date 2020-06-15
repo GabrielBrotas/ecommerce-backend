@@ -1,0 +1,41 @@
+
+.main-content{
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buy-product-image{
+    background-color: white;
+}
+.buy-product-details{
+    background-color: white;
+    flex: 1;
+}
+
+.buy-product-actions{
+    background-color: #067eca;
+    width: 25%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-left: 5rem;
+    margin-right: 5rem;   
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.buy-product-qty{
+    padding-top: 1rem;
+}
+
+.buy-product-price{
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.buy-product-actions button{
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: 5rem;
+}
