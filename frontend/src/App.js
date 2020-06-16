@@ -4,13 +4,14 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
 
 // Screens
-import Navbar from './pages/partials/navbar'
-import Footer from './pages/partials/footer'
-import HomePage from './pages/home'
-import Products from './pages/products'
-import Games from './pages/games'
-import Product from './pages/product'
-import ShoppingCart from './pages/shoppingCart'
+import Navbar from './screens/partials/navbar'
+import Footer from './screens/partials/footer'
+import HomePage from './screens/home'
+import Products from './screens/products'
+import Games from './screens/games'
+import Product from './screens/product'
+import ShoppingCart from './screens/shoppingCart'
+import Admin from './screens/admin';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       <Navbar />
 
         <div className="content">
+          <Route path="/admin" component={Admin}></Route>
           <Route path="/Cart" component={ShoppingCart}/>
           <Route path="/product" component={Product}/>
           <Route path="/games" component={Games}/>
