@@ -65,8 +65,8 @@ function Cart(props) {
             <div className="buy-items-content">
 
                 <h3>Finalizar Compra</h3>
-                <h4>Qtd items: 3</h4>
-                <h4>Preço Final: R$ 180,00</h4>
+                <h4>Qtd items: {cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.qty, 0)}</h4>
+                <h4>Preço Final: R$ {cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.price * currentValue.qty, 0)}</h4>
                 <button className="button-buy">Comprar Agora</button>
 
             </div>
