@@ -21,10 +21,10 @@
 }
 
 .category:hover{
-    background-color: #e3eaf9;
+    background-color: #adb9d2;;
     color:#282d65;
     cursor: pointer;
-    border-bottom: groove #067eca;
+    
 }
 /* mais vendidos box */
 
@@ -68,7 +68,6 @@
 }
 
 .product-img img:hover{
-    
     transform: scale(1.1);
 }
 

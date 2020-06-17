@@ -15,13 +15,22 @@
 .buy-product-image{
     background-color: white;
 }
+
 .buy-product-image img {
     margin: 2rem;
     width: 25rem;
 }
+
 .buy-product-details{
     background-color: white;
     flex: 1;
+}
+
+.body-cancel-icon{
+    align-self: center;
+}
+.body-cancel-icon img{
+    cursor: pointer;
 }
 
 .buy-product-actions{

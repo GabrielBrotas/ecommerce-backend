@@ -5,4 +5,12 @@ function getIdFromUrl(url) {
     return id
 }
 
-export {getIdFromUrl}
+function getIdAndQtyFromUrl(url) {
+    
+    const id = url.split('=')[1].split('/')[0]
+    const qty = parseInt(url.split("=")[2])
+    
+    return [id, qty]
+}
+
+export {getIdFromUrl, getIdAndQtyFromUrl}

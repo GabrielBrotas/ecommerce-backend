@@ -1,6 +1,6 @@
 // reducer trata os states e actions
 
-import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DELETE_FAIL } from "../constants/productConstants";
+import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DELETE_FAIL, PRODUCT_ITEM_REQUEST, PRODUCT_ITEM_SUCCESS, PRODUCT_ITEM_FAIL } from "../constants/productConstants";
 
 // definir o estado inicial do state
 function productListReducer(state = {products: []}, action) {
@@ -11,6 +11,20 @@ function productListReducer(state = {products: []}, action) {
         case PRODUCT_LIST_SUCCESS:
             return {loading: false, products: action.payload}
         case PRODUCT_LIST_FAIL:
+            return {loading: false, error: action.payload}
+        default:
+            return state
+    }
+}
+
+function productItemReducer(state = {product: {}}, action) {
+
+    switch (action.type) {
+        case PRODUCT_ITEM_REQUEST:
+            return {loading: true, product: {}}
+        case PRODUCT_ITEM_SUCCESS:
+            return {loading: false, product: action.payload}
+        case PRODUCT_ITEM_FAIL:
             return {loading: false, error: action.payload}
         default:
             return state
@@ -34,4 +48,4 @@ function productDeleteReducer(state = {products: {}}, action) {
     }
 }
 
-export {productListReducer, productDeleteReducer}
+export {productListReducer, productItemReducer ,productDeleteReducer}

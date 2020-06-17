@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 function Products() {
 
-    const [filterCondition, setFilterCondition] = useState(false)
+    const [filterCondition, setFilterCondition] = useState(null)
 
     const productList = useSelector(state => state.productList)
     const {loading, products, error} = productList
@@ -30,7 +30,7 @@ function Products() {
             <div className="all-products">
                 
                 <div className="product-categories">
-                    <div className="category" onClick={(e) => setFilterCondition(false)}>
+                    <div className="category" onClick={(e) => setFilterCondition(null)}>
                         <h3>All</h3>
                     </div>
                     <div className="category" id="Game" onClick={(e) => setFilterCondition(e.currentTarget.id)}>

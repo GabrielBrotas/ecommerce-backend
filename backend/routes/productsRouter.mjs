@@ -5,15 +5,32 @@ const router = express.Router()
 router.get('/:filter?', async (req, res) => {
 
     const filter = req.params.filter
+    const id = req.params.id
 
     if(!filter){
         const products = await Product.find({})
         res.send(products)
+    
     } else {
         const products = await Product.find({category: filter})
         res.send(products)
+
+    } 
+    
+})
+
+router.get('/id/:id', async (req, res) => {
+
+    const id = req.params.id
+
+    try{
+        const product = await Product.findOne({_id: id})
+        res.send(product)
+    } catch(error) {
+        res.status(404).send({message: 'product not found'})
     }
     
+   
     
 })
 

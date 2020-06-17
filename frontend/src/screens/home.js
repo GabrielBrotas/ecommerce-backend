@@ -17,7 +17,7 @@ function HomePage() {
 
     useEffect( () => {
 
-        dispatch(listProducts())
+        dispatch(listProducts(null))
 
     }, [dispatch])
 
