@@ -1,12 +1,23 @@
 
-.main-content{
+.product-main-content{
     margin: 2rem;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-info-content{
+    display: flex;
+    flex: 2;    
+    margin-top: 2rem;
 }
 
 .buy-product-image{
     background-color: white;
+}
+.buy-product-image img {
+    margin: 2rem;
+    width: 25rem;
 }
 .buy-product-details{
     background-color: white;
@@ -14,8 +25,8 @@
 }
 
 .buy-product-actions{
-    background-color: #067eca;
-    width: 25%;
+    margin-top: 2rem;
+    background-color: #fbfef9;
     padding-left: 2rem;
     padding-right: 2rem;
     margin-left: 5rem;
@@ -23,6 +34,13 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    flex: 1;
+}
+
+.buy-product-actions h3{
+    border-bottom: 1px solid black;
+    width: 100%;
+    text-align: center;
 }
 .buy-product-qty{
     padding-top: 1rem;
@@ -38,31 +56,27 @@
     width: 100%;
     margin-top: auto;
     margin-bottom: 5rem;
-}
-
-.triangle-buttons{
-    margin-top: 3rem;
+    background-color: #5254a7; /* Green */
+    font-weight: bold;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 2rem;
+    transition-duration: 0.3s;
     margin-bottom: 3rem;
-    display: flex;
-    align-self: center;
 }
 
-.triangle-next{
-    width: 0; 
-    height: 0; 
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    border-left: 25px solid white;
+.buy-product-actions button:hover {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.buy-product-description p {
     margin-left: 2rem;
-    cursor: pointer;
-}
-
-.triangle-prev{
-    width: 0; 
-    height: 0; 
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent; 
-    border-right:25px solid white; 
     margin-right: 2rem;
-    cursor: pointer;
 }

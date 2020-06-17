@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-
+import {Link} from 'react-router-dom'
 // useSelector se comunica com a store/reducer, useDispatch dispara uma função para as actions
 import {useSelector, useDispatch} from 'react-redux'
 
 import '../styles/index.css'
 import { listProducts } from '../actions/productActions'
+
 
 function HomePage() {
 
@@ -88,10 +89,13 @@ function HomePage() {
 
             <div className="carousel-container">
                 <div className="carousel-slide">
-        
-                    <img src="/images/carousel/jogo1.jpg" alt='Carousel Foto'></img>
-                    <img src="/images/carousel/jogo3.jpg" alt='Carousel Foto'></img>
-                    <img src="/images/carousel/jogo2.jpg" alt='Carousel Foto'></img>
+
+                    {products.map(product => (
+
+                        product.carousel && <img key={product._id} src={product.image} alt='Carousel Foto'></img>
+                        
+                    ))}
+    
                     
                 </div>
                 
@@ -148,8 +152,9 @@ function HomePage() {
                 <div className="box-best-products">
                     
                     {products.map(product => (
+                        product.bestseller &&
                         <div key={product._id} className="product-bestseller-content">
-
+                            
                             <div className="product-bestseller-img">
                                 <img src={product.image} alt="Product"></img>
                             </div>
@@ -161,7 +166,7 @@ function HomePage() {
                 </div>
 
                 <div>
-                    <button className="button">See More</button>
+                    <Link to="/products"><button className="button">See More</button></Link>
                 </div>
             </div>
             

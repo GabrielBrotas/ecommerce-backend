@@ -1,25 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import '../styles/products.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { listProducts } from '../actions/productActions'
+import { Link } from 'react-router-dom'
 
 function Products() {
-    return( 
-        <main className="main">
 
+    const [filterCondition, setFilterCondition] = useState(false)
+
+    const productList = useSelector(state => state.productList)
+    const {loading, products, error} = productList
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(listProducts(filterCondition))
+        
+    }, [dispatch, filterCondition])
+
+
+    return( 
+        loading ? <div>Loading...</div>
+        :
+        error ? <div>Erro: {error}</div>
+        :
+        <main className="main">
 
             <div className="all-products">
                 
                 <div className="product-categories">
-                    <div className="category">
+                    <div className="category" onClick={(e) => setFilterCondition(false)}>
                         <h3>All</h3>
                     </div>
-                    <div className="category">
+                    <div className="category" id="Game" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
+                        <h3>Games</h3>
+                    </div>
+                    <div className="category" id="Controle" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
                         <h3>Controllers</h3>
                     </div>
-                    <div className="category">
+                    <div className="category" id="Console" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
                         <h3>Consoles</h3>
                     </div>
-                    <div className="category">
+                    <div className="category" id="Outros" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
                         <h3>Others</h3>
                     </div>
                 </div>
@@ -32,240 +55,32 @@ function Products() {
 
                 <div className="box-products">
                     
-                    <div className="product-content">
+                    {products.map( product => (
 
-                        <div className="product-img">
-                            <img src="/images/products/acessorio1.jpg" alt="Product"></img>
-                        </div>
+                        <Link to={"/product/" + product._id} key={product._id} style={{ textDecoration: 'none', color: '#161616' }}>
+                            <div className="product-content">
 
-                        <div className="product-description">
+                                <div className="product-img">
+                                    <img src={product.image} alt="Product"></img>
+                                </div>
 
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
+                                <div className="product-description">
+
+                                    <div className="product-name">
+                                        <h3>{product.name}</h3>
+                                    </div>
+
+                                    <div className="product-price">
+                                        A partir de R$ {product.price}
+                                    </div>
+
+
+                                </div>
+
                             </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/acessorio2.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-
-                        </div>
-                        
-
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/acessorio3.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/console1.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/console2.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/console3.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/controle1.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/controle2.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/controle3.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/controle4.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/controle5.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div className="product-content">
-
-                        <div className="product-img">
-                            <img src="images/products/controle6.jpg" alt="Product"></img>
-                        </div>
-
-                        <div className="product-description">
-
-                            <div className="product-name">
-                                <h3>Nome do Produto</h3>
-                            </div>
-
-                            <div className="product-price">
-                                A partir de R$ 99,00
-                            </div>
-
-
-                        </div>
-                    </div>
+                        </Link>
+                    ))}
+                    
 
                 </div>
 

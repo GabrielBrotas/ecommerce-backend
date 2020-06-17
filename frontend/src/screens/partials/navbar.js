@@ -37,7 +37,6 @@ function Navbar(){
             <div className="navbar-links above">
                 <ul className="navbar-ul-above navbar-hide">
                     <Link to="/products" style={{ textDecoration: 'none' }}><li>Products</li></Link>
-                    <Link to="/games" style={{ textDecoration: 'none' }}><li>Games</li></Link>
                 </ul>
             </div>
             
