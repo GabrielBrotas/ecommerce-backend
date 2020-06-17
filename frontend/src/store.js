@@ -3,8 +3,8 @@ import thunk from 'redux-thunk'
 import { productListReducer, productDeleteReducer, productItemReducer } from './reducer/productReducers'
 import { cartReducer } from './reducer/cartReducer'
 
-
-const initialState = {}
+const cartItems = []
+const initialState = {cartList: {cartItems}}
 
 const reducer = combineReducers({
     productList: productListReducer,

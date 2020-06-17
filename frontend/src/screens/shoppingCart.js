@@ -8,7 +8,7 @@ import { addToCart } from '../actions/cartActions'
 function Cart(props) {
     
     const cart = useSelector(state => state.cartList)
-    const {loading, cartItems, error} = cart
+    const {cartItems} = cart
 
     // pegear o id e a quantidade caso tenha
     const url = props.location.search
@@ -24,10 +24,11 @@ function Cart(props) {
         }
         
     }, [dispatch, productId, qty])
+
+    console.log('***cart === ')
     console.log(cartItems)
+    
     return(
-    loading ? <div>Loading...</div> :
-    error ? <div>error = {error}</div> :
 
         <main className="main">
             
