@@ -2,8 +2,19 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import '../../styles/partials.css'
+import { useSelector } from 'react-redux'
+
+import Cookie from 'js-cookie'
 
 function Navbar(){
+
+    const UserSignin = useSelector(state => state.userSignin)
+    const {userInfo} = UserSignin
+
+    const logout = () => {
+        Cookie.remove('userInfo')
+        window.location.reload()
+    }
 
     function showNavbar(){
         document.querySelector('.navbar-ul-above').classList.remove('navbar-hide')
@@ -27,7 +38,7 @@ function Navbar(){
     }
 
     return(
-
+        
         <header className="header">
     
             <div className="navbar-logo">
@@ -49,8 +60,11 @@ function Navbar(){
             <div className="navbar-links rigth below">
                 
                 <ul className="navbar-ul-below navbar-hide">
+
+                    {userInfo ? <li onClick={logout}>Logout</li> : 
+                    <Link to="/signin" style={{ textDecoration: 'none' }}><li>Sign in</li></Link>
+                    }
                     
-                    <li>Sign in</li>
 
                     <div className="shopping-car">
                         

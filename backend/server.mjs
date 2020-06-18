@@ -5,6 +5,7 @@ import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 
 import productsRouter from './routes/productsRouter.mjs'
+import usersRouter from './routes/usersRouter.mjs'
 
 // database
 mongoose.connect('mongodb://localhost/products', {
@@ -29,7 +30,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/products', productsRouter)
-
+app.use('/users', usersRouter)
 
 
 

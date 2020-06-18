@@ -35,30 +35,32 @@ function Cart(props) {
         <div className="shoppingcart-content">
             
             <div className="list-content">
+                {cartItems.length === 0 ? 'Sem itens no carrinho' : 
 
-                {cartItems.map( item => (
+                    cartItems.map( item => (
 
-                    <div key={item.product} className="list-body">
-                        <div className="body-img">
-                            <img src={item.image} alt="product"></img>
+                        <div key={item.product} className="list-body">
+                            <div className="body-img">
+                                <img src={item.image} alt="product"></img>
+                            </div>
+
+                            <div className="body-details">
+                                <h3>{item.name}</h3>
+                                <h4>Quantidade: {item.qty}</h4>
+                            </div>
+
+                            <div className="body-price">
+                                <h3>R$ {item.price}</h3>
+                            </div>
+
+                            <div className="body-cancel-icon">
+                                <img src="/images/fechar.png" alt="delete"></img>
+                            </div>
+                        
                         </div>
 
-                        <div className="body-details">
-                            <h3>{item.name}</h3>
-                            <h4>Quantidade: {item.qty}</h4>
-                        </div>
-
-                        <div className="body-price">
-                            <h3>R$ {item.price}</h3>
-                        </div>
-
-                        <div className="body-cancel-icon">
-                            <img src="/images/fechar.png" alt="delete"></img>
-                        </div>
-                    
-                    </div>
-
-                ))}
+                    ))
+            }
                 
             </div>
 
