@@ -4,7 +4,10 @@ import '../styles/admin.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { listProducts, saveProduct, deleteProduct} from '../actions/productActions'
 
-function Admin() {
+function Admin(props) {
+
+    const userSignin = useSelector(state => state.userSignin)
+    const {userInfo} = userSignin
 
     const [showForm, setshowForm] = useState(false)
 
@@ -20,12 +23,12 @@ function Admin() {
 
     const productList = useSelector(state=> state.productList)
     const {loading, products, error} = productList
-    
+
     const dispatch = useDispatch()
 
     useEffect(() => {
 
-        dispatch(listProducts())
+        dispatch(listProducts(null))
 
     }, [dispatch])
 
@@ -65,13 +68,14 @@ function Admin() {
         window.location.reload()
     }
 
-    
     return(
         loading ? <div>Loading...</div>
         :
         error ? <div>Erro: {error} </div> 
         :
 
+        userInfo && userInfo.isAdmin ? 
+        
         <main className="main-content">
             {showForm && 
             <div className="itemConfig-content">
@@ -197,6 +201,11 @@ function Admin() {
             
 
         </main>
+        :
+        <div>
+            {props.history.push('/')}
+        </div>
+        
     )
 }
 

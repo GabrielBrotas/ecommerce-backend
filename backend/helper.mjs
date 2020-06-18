@@ -7,7 +7,7 @@ const getToken = (user) => {
         email: user.email,
         isAdmin: user.isAdmin,
     }, 'somethingsecret', {
-        expiresIn: '24h'
+        expiresIn: '48h'
     })
 }
 

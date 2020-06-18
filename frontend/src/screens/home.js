@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 // useSelector se comunica com a store/reducer, useDispatch dispara uma função para as actions
 import {useSelector, useDispatch} from 'react-redux'
@@ -9,6 +9,7 @@ import { listProducts } from '../actions/productActions'
 
 function HomePage() {
 
+    const [carouselImage, setCarouselImage] = useState(0)
     
     const productList = useSelector(state => state.productList)
     const {products, loading, error} = productList
@@ -23,17 +24,14 @@ function HomePage() {
 
 
     // carousel functions 
+    const [counter, setCounter] = useState(0)
 
-    let counter = 0
     const qtyImages = 3
     
     let windowSize = window.innerWidth
     const imagesSize = 1500
     
-    const nextCarouselPhoto = () => {
-
-        const carouselSlide = document.querySelector('.carousel-slide')
-        
+    const verifyWindowSize = () => {
         windowSize = window.innerWidth
 
         // caso a tela for maior que o tamanho da imagem(1500px) travar nesse valor
@@ -41,43 +39,49 @@ function HomePage() {
             windowSize = imagesSize
         }
 
-        console.log(counter)
+        return windowSize
+    }
+
+    const nextCarouselPhoto = () => {
+
+        const carouselSlide = document.querySelector('.slide-container')
+    
+        const windowSize = verifyWindowSize()
+
         if(counter < qtyImages - 1 ) {
 
-            carouselSlide.style.transition = 'transform 0.5s ease-in-out'
-            counter++;
             carouselSlide.style.transform = 'translateX(' + (-windowSize * counter) +'px)'
-        } else {
-            counter = 0
-            carouselSlide.style.transform = 'translateX(' + (-windowSize * counter) +'px)'
-        }
+            setCounter(counter+1);
             
+        } else {
+
+            setCounter(0)
+            carouselSlide.style.transform = 'translateX(' + (windowSize * 1) +'px)'
+        }
         
     }
 
     const prevCarouselPhoto = () => {
         
-        const carouselSlide = document.querySelector('.carousel-slide')
-
-        windowSize = window.innerWidth
-
-        // caso a tela for maior que o tamanho da imagem(1500px) travar nesse valor
-        if(windowSize >= imagesSize) { 
-            windowSize = imagesSize
-        }
+        const carouselSlide = document.querySelector('.slide-container')
+        const windowSize = verifyWindowSize()
 
         if(counter > 0) {
+            console.log(counter)
+            setCounter(counter-1);
+            carouselSlide.style.transform = 'translateX(' + (windowSize + ((-counter+1) * windowSize)) +'px)'
             
-            carouselSlide.style.transition = 'transform 0.5s ease-in-out'
-            counter--;
-            carouselSlide.style.transform = 'translateX(' + (-windowSize * counter) +'px)'
-
         } else {
-            carouselSlide.style.transition = 'transform 0.5s ease-in-out'
-            counter = 2
-            carouselSlide.style.transform = 'translateX(' + (-windowSize * counter) +'px)'
+            setCounter(qtyImages - 1)
+            console.log('counter =' + counter)
+            carouselSlide.style.transform = 'translateX(' + (-windowSize * (counter + 1)) +'px)'
         }
         
+    }
+    
+
+    const buyCarouselImage = (counter) => {
+        console.log(counter)
     }
 
     return( 
@@ -88,17 +92,26 @@ function HomePage() {
         <main className="main">
 
             <div className="carousel-container">
-                <div className="carousel-slide">
+                <div  className="slide-container">
 
                     {products.map(product => (
+                        product.carousel && 
 
-                        product.carousel && <img key={product._id} src={product.image} alt='Carousel Foto'></img>
-                        
+                        <div key={product._id} className="carousel-slide"> 
+
+                            <img src={product.image} alt='Carousel Foto'></img>
+
+                            <div className="box-buy">
+                                    <p>Compre já!</p>
+                            </div>
+                            
+                        </div>
+
                     ))}
-    
-                    
+
+                        
                 </div>
-                
+
                 <div className="arrows-div">
                     <div className="box-arrow">
                         <img  onClick={prevCarouselPhoto} className="seta-left" src="/images/de-volta.png" alt="Arrow next"></img>
@@ -108,11 +121,6 @@ function HomePage() {
                         <img onClick={nextCarouselPhoto} className="seta-right" src="/images/proximo.png" alt="Arrow prev "></img>
                     </div>
                 </div>
-
-                <div className="box-buy">
-                    <p>Compre já!</p>
-                </div>
-                
             </div>
 
             <div className="products-content">

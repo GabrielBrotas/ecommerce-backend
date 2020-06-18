@@ -1,4 +1,4 @@
-const {  CART_ADD_SUCCESS } = require("../constants/cartConstants");
+const {  CART_ADD_SUCCESS, CART_REMOVE_ITEM } = require("../constants/cartConstants");
 
 
 function cartReducer(state = {cartItems: []}, action) {
@@ -8,9 +8,6 @@ function cartReducer(state = {cartItems: []}, action) {
         case CART_ADD_SUCCESS:
             
             const item = action.payload;
-
-            console.log('***cartitems ====')
-            console.log(state.cartItems)
 
             // verificar se o item já está no carrinho
             const product = state.cartItems.find( carrinho => carrinho.product === item.product)
@@ -24,6 +21,8 @@ function cartReducer(state = {cartItems: []}, action) {
             // se o produto nao existir adicionar no carrinho
             return {cartItems: [...state.cartItems, item]}
 
+        case CART_REMOVE_ITEM:
+            return {cartItems: state.cartItems.filter( carrinho => carrinho.product !== action.payload)}
         default:
             return state
     }

@@ -77,7 +77,8 @@ function Navbar(){
                         </Link>
                     </div>
 
-                    <Link to="/admin" style={{ textDecoration: 'none' }}><li>Admin</li></Link>
+                    {userInfo && userInfo.isAdmin && <Link to="/admin" style={{ textDecoration: 'none' }}><li>Admin</li></Link> }
+                    
                     
                 </ul>
             </div>

@@ -10,22 +10,22 @@
     text-align: center;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
     justify-content: center;
 }
 
-.carousel-slide{
+.slide-container {
     display: flex;
-    position: relative;
+    transition: 0.5s ease-in-out;
+    transform: translateX(1500px);
+}
+
+.carousel-slide{
     opacity: .8;
 }
 
-.carousel-slide img {
-    width: 100%;
-
-}
 
 .arrows-div{
+    align-self: center;
     display: flex;
     position: absolute;
     width: 100%;
@@ -67,7 +67,6 @@
     margin-left: auto;
     margin-right: auto;
     max-width: 150px;
-    bottom: 10rem;
     border-radius: 20rem;
     cursor: pointer;
     transition: .2s ease-out
@@ -96,7 +95,7 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    bottom: 5rem;
+
 }
 
 .products-highligth {
@@ -134,7 +133,6 @@
 
 .bests-sellers-content{
     position: relative;
-    bottom: 5rem;
     text-align: center;
     display: flex;
     flex-direction: column;

@@ -41,7 +41,7 @@ router.post('/signin', async (req, res) => {
                 })
                   
             } else {
-                res.status(404).send({message: 'invalid password'})
+                res.status(404).send({message: 'invalid'})
             }
         } else {
             res.status(404).send({message: 'user not found'})

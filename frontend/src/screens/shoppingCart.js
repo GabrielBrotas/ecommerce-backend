@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import '../styles/shoppingCart.css'
 import { getIdAndQtyFromUrl } from '../helper'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 function Cart(props) {
     
@@ -25,8 +25,9 @@ function Cart(props) {
         
     }, [dispatch, productId, qty])
 
-    console.log('***cart === ')
-    console.log(cartItems)
+    const removeFromCartHandler = (productId) => {
+        dispatch(removeFromCart(productId))
+    }
     
     return(
 
@@ -54,7 +55,7 @@ function Cart(props) {
                             </div>
 
                             <div className="body-cancel-icon">
-                                <img src="/images/fechar.png" alt="delete"></img>
+                                <img onClick={() => removeFromCartHandler(item.product)} src="/images/fechar.png" alt="delete"></img>
                             </div>
                         
                         </div>
@@ -68,7 +69,7 @@ function Cart(props) {
 
                 <h3>Finalizar Compra</h3>
                 <h4>Qtd items: {cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.qty, 0)}</h4>
-                <h4>Preço Final: R$ {cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.price * currentValue.qty, 0)}</h4>
+                <h4>Preço Final: R$ {(cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.price * currentValue.qty, 0)).toFixed(2)}</h4>
                 <button className="button-buy">Comprar Agora</button>
 
             </div>
