@@ -18,12 +18,19 @@ a{
     margin-bottom: 3rem;
 }
 
-.category{
-    width: 25%;
-    transition: all .2s ease-in-out;
+.product-categories a {
+    width: 100%;
+    color: #0f0e0e;
 }
 
-.category:hover{
+.category{
+    display: flex;
+    width: 100%;
+    transition: all .2s ease-in-out;
+    justify-content: center;
+}
+
+.product-categories a:hover{
     background-color: #adb9d2;;
     color:#282d65;
     cursor: pointer;
@@ -50,10 +57,6 @@ a{
     justify-content: center;
 }
 
-.product-input{
-    font-weight: bold;
-    color: white
-}
 
 .product-content {
     display: flex;

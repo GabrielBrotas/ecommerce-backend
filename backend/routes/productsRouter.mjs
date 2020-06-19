@@ -30,8 +30,6 @@ router.get('/id/:id', async (req, res) => {
         res.status(404).send({message: 'product not found'})
     }
     
-   
-    
 })
 
 router.post('/', async (req, res) => {

@@ -13,4 +13,11 @@ function getIdAndQtyFromUrl(url) {
     return [id, qty]
 }
 
-export {getIdFromUrl, getIdAndQtyFromUrl}
+function getFilterFromUrl(filter) {
+
+    const condition = filter.split('=')[1]
+
+    return condition
+}
+
+export {getIdFromUrl, getIdAndQtyFromUrl, getFilterFromUrl}

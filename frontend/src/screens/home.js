@@ -9,7 +9,7 @@ import { listProducts } from '../actions/productActions'
 
 function HomePage() {
 
-    const [carouselImage, setCarouselImage] = useState(0)
+    // const [carouselImage, setCarouselImage] = useState(0)
     
     const productList = useSelector(state => state.productList)
     const {products, loading, error} = productList
@@ -49,12 +49,10 @@ function HomePage() {
         const windowSize = verifyWindowSize()
 
         if(counter < qtyImages - 1 ) {
-
             carouselSlide.style.transform = 'translateX(' + (-windowSize * counter) +'px)'
             setCounter(counter+1);
             
         } else {
-
             setCounter(0)
             carouselSlide.style.transform = 'translateX(' + (windowSize * 1) +'px)'
         }
@@ -80,9 +78,9 @@ function HomePage() {
     }
     
 
-    const buyCarouselImage = (counter) => {
-        console.log(counter)
-    }
+    // const buyCarouselImage = (counter) => {
+    //     console.log(counter)
+    // }
 
     return( 
         loading ? <div>Loading...</div>
@@ -99,10 +97,8 @@ function HomePage() {
 
                         <div key={product._id} className="carousel-slide"> 
 
-                            <img src={product.image} alt='Carousel Foto'></img>
-
-                            <div className="box-buy">
-                                    <p>Compre já!</p>
+                            <div className="image-content">
+                                <img className="image-carousel" src={product.image} alt='Carousel Foto'></img>
                             </div>
                             
                         </div>
@@ -124,9 +120,9 @@ function HomePage() {
             </div>
 
             <div className="products-content">
-
+                <Link to="/products/?filter=Controle" style={{ textDecoration: 'none', color: '#161616' }}>
                 <div className="product-one">
-
+                    
                     <div className="products-highligth">
                         <h2>Controles Personalizados</h2>
                         <p>Escolha entre dezenas de controles personalizados com a temática do seu game favorito, além de controles com temas de filmes, animes e muito mais. Tudo de Gamers para Gamers</p>
@@ -137,7 +133,9 @@ function HomePage() {
                     </div>
 
                 </div>
+                </Link>
                 
+                <Link to="/products/?filter=Game" style={{ textDecoration: 'none', color: '#161616' }}>
                 <div className="product-two">
 
                     <div className="products-highligth">
@@ -150,7 +148,7 @@ function HomePage() {
                     </div>
 
                 </div>
-                
+                </Link>
             </div>
 
             <div className="bests-sellers-content">
@@ -164,7 +162,11 @@ function HomePage() {
                         <div key={product._id} className="product-bestseller-content">
                             
                             <div className="product-bestseller-img">
-                                <img src={product.image} alt="Product"></img>
+
+                            <Link to={"/product/" + product._id} style={{ textDecoration: 'none', color: '#161616' }}>
+                                <img src={product.image} alt="Product" ></img>
+                            </Link>
+                                
                             </div>
 
                         </div>

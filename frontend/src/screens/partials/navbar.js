@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 
 import '../../styles/partials.css'
@@ -8,6 +8,9 @@ import Cookie from 'js-cookie'
 
 function Navbar(){
 
+    const productList = useSelector(state => state.productList)
+    const {loading, products, error } = productList
+
     const UserSignin = useSelector(state => state.userSignin)
     const {userInfo} = UserSignin
 
@@ -15,6 +18,25 @@ function Navbar(){
         Cookie.remove('userInfo')
         window.location.reload()
     }
+
+    const [inputBar, setInputBar] = useState('')
+
+    useEffect( () => {
+
+        const searchBar = document.querySelector('.ul-products').getElementsByTagName('li')
+
+        Array.from(searchBar).forEach(item => (
+            
+            inputBar === "" ? (item.style = 'display: none') :
+            
+            item.textContent.toLowerCase().match(inputBar.toLowerCase()) ?
+            (item.style = "display: block") :
+            (item.style = 'display: none') 
+            
+        ))
+
+        
+    }, [inputBar])
 
     function showNavbar(){
         document.querySelector('.navbar-ul-above').classList.remove('navbar-hide')
@@ -38,7 +60,9 @@ function Navbar(){
     }
 
     return(
-        
+        loading ? <div>Navbar loading...</div> :
+        error ? <div>Erro = {error}</div>:
+
         <header className="header">
     
             <div className="navbar-logo">
@@ -53,8 +77,18 @@ function Navbar(){
             
             
             <div className="navbar-input">
-                <input type="text" name="search" placeholder="O que está procurando?"></input>
-                <img src="/images/lupa.png" alt="search"></img>
+                <input type="text" name="search" autoComplete="off" placeholder="O que está procurando?" value={inputBar} onChange={(e) => setInputBar(e.target.value)}></input>
+                <div className="box-suggestion">
+                    <ul className="ul-products">
+                        {products.map(product => (
+                            <Link to={"/product/" + product._id} key={product._id} style={{ textDecoration: 'none' }}>
+                            <li onClick={() => setInputBar('')} id="inputSearch" >{product.name}</li>
+                            </Link>
+                        ))}
+                        
+                    </ul>
+                </div>
+
             </div>
 
             <div className="navbar-links rigth below">

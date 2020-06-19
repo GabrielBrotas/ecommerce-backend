@@ -11,18 +11,26 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+
 }
 
 .slide-container {
     display: flex;
     transition: 0.5s ease-in-out;
     transform: translateX(1500px);
+
+
 }
 
 .carousel-slide{
     opacity: .8;
+
 }
 
+.image-content{
+    display: flex;
+
+}
 
 .arrows-div{
     align-self: center;
@@ -95,7 +103,13 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    contain: content;
+}
 
+.products-content a{
+    flex: 1;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .products-highligth {
@@ -104,14 +118,15 @@
 .products-highligth p, h2{
     margin-left: 2rem;
     margin-right: 2rem;
-    
 }
 
 .product-one-background, .product-two-background{
     width: 40%;
 }
+
 .product-one, .product-two {
     display: flex;
+    height: 100%;
     flex:1;
     align-items: flex-start;
     background-image: linear-gradient(#FBFEF9, #5254a7);

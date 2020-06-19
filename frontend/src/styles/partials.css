@@ -33,6 +33,9 @@ body{
     display: flex;
     align-items: center;
 }
+.navbar-logo img {
+    cursor: pointer;
+}
 
 .navbar-links ul {
     display: flex;
@@ -55,14 +58,45 @@ body{
 
 .navbar-input{
     display: flex;
-    width: 45%;
+    width: 560px;
     margin-left: auto;
+    flex-direction: column;
 }
 
 .navbar-input input{
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+}
+
+.box-suggestion {
+    z-index: 1;
+    display: flex;
+    background-color: #fbfef9;
+    max-width: 1500px;
+    position: absolute;
+    margin-top: 2.3rem;
+    margin-left: .1rem;
+}
+
+.box-suggestion ul {
+    list-style-type: none;
+    padding: 0;
+    flex:1;
+    margin: 0;
+}
+.box-suggestion li {
+    width: 555.2px;
+    padding: 1.5rem 0 1.5rem 0;
+    margin-left: 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid darkgray;
+    display: none;
+    color: #0f0e0e
+}
+
+.box-suggestion li:hover{
+    background-color: #e3e3e9;
 }
 .navbar-input img{
     margin-left: 5px;
@@ -90,12 +124,17 @@ body{
     margin-left: 2rem;
     opacity: 0.7;
 }
+
+.shopping-car img{
+    cursor: pointer;
+}
 .items-in-car{
     color: white;
     opacity: .9;
     border-radius: 50%;
     padding: .5rem;
     background-color: #282d65;
+    cursor: pointer;
 }
 
 .items-in-car:hover{   
@@ -171,7 +210,17 @@ body{
     }
 
     .navbar-input{
-        width: 60%;
+        width: 100%;
+    }
+    .box-suggestion{
+        width: 100%;
+        margin-right: auto;
+        left: 0;
+        margin-top: 4rem;
+    }
+
+    .box-suggestion li{
+        width: 100%;
     }
     .navbar-logo{
         margin-right: 2rem;
