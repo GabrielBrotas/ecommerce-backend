@@ -10,6 +10,9 @@ function Cart(props) {
     const cart = useSelector(state => state.cartList)
     const {cartItems} = cart
 
+    const userSignin = useSelector(state => state.userSignin)
+    const {userInfo} = userSignin
+
     // pegear o id e a quantidade caso tenha
     const url = props.location.search
     const productId = url ? getIdAndQtyFromUrl(url)[0] : null
@@ -70,7 +73,13 @@ function Cart(props) {
                 <h3>Finalizar Compra</h3>
                 <h4>Qtd items: {cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.qty, 0)}</h4>
                 <h4>Preço Final: R$ {(cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.price * currentValue.qty, 0)).toFixed(2)}</h4>
-                <button className="button-buy">Comprar Agora</button>
+                {cartItems.length > 0 ? 
+                  userInfo ? <button onClick={() => alert('tem')} className="button-buy">Comprar Agora</button> :
+                  <button onClick={() => props.history.push('/signin')} className="button-buy">Comprar Agora</button>
+                :
+                <button className="button-buy" style={{backgroundColor: '#626263'}} disabled>Comprar Agora</button>
+                }
+                
 
             </div>
 

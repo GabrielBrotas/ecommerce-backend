@@ -17,19 +17,20 @@
 .slide-container {
     display: flex;
     transition: 0.5s ease-in-out;
-    transform: translateX(1500px);
-
-
+    display: -webkit-box;
 }
 
 .carousel-slide{
     opacity: .8;
-
+    /* width: max-content; */
 }
 
 .image-content{
     display: flex;
+}
 
+.image-content img{
+    width: 100%;
 }
 
 .arrows-div{

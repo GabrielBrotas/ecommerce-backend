@@ -49,12 +49,13 @@ function HomePage() {
         const windowSize = verifyWindowSize()
 
         if(counter < qtyImages - 1 ) {
-            carouselSlide.style.transform = 'translateX(' + (-windowSize * counter) +'px)'
             setCounter(counter+1);
+            carouselSlide.style.transform = 'translateX(' + (-windowSize * (counter + 1)) +'px)'
+            
             
         } else {
             setCounter(0)
-            carouselSlide.style.transform = 'translateX(' + (windowSize * 1) +'px)'
+            carouselSlide.style.transform = 'translateX(0px)'
         }
         
     }
@@ -66,11 +67,11 @@ function HomePage() {
 
         if(counter > 0) {
             setCounter(counter-1);
-            carouselSlide.style.transform = 'translateX(' + (windowSize + ((-counter+1) * windowSize)) +'px)'
+            carouselSlide.style.transform = 'translateX(' + (windowSize + ((-counter) * windowSize)) +'px)'
             
         } else {
             setCounter(qtyImages - 1)
-            carouselSlide.style.transform = 'translateX(' + (-windowSize * (counter + 1)) +'px)'
+            carouselSlide.style.transform = 'translateX(' + (-windowSize * (qtyImages-1)) +'px)'
         }
         
     }
