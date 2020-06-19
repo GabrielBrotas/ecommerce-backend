@@ -14,6 +14,9 @@ function Navbar(){
     const UserSignin = useSelector(state => state.userSignin)
     const {userInfo} = UserSignin
 
+    const cartList = useSelector(state => state.cartList)
+    const {cartItems} = cartList
+
     const logout = () => {
         Cookie.remove('userInfo')
         window.location.reload()
@@ -71,7 +74,7 @@ function Navbar(){
 
             <div className="navbar-links above">
                 <ul className="navbar-ul-above navbar-hide">
-                    <Link to="/products" style={{ textDecoration: 'none' }}><li>Products</li></Link>
+                    <Link to="/products/?filter=All" style={{ textDecoration: 'none' }}><li>Products</li></Link>
                 </ul>
             </div>
             
@@ -103,12 +106,14 @@ function Navbar(){
                     <div className="shopping-car">
                         
                         <Link to="/cart"><img src="/images/supermercado.png" alt="shopping car"></img></Link>
-                        
+                        {cartItems.length > 0 &&
                         <Link to="/cart">
                         <div className="items-in-car">
-                            1
+                            
+                            {cartItems.length}
                         </div>
                         </Link>
+                        }
                     </div>
 
                     {userInfo && userInfo.isAdmin && <Link to="/admin" style={{ textDecoration: 'none' }}><li>Admin</li></Link> }

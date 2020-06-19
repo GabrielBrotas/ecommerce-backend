@@ -2,19 +2,56 @@ import express from 'express'
 import Product from '../models/Products.mjs'
 const router = express.Router()
 
-router.get('/:filter?', async (req, res) => {
 
-    const filter = req.params.filter
-    const id = req.params.id
+function checkPagination(page, limit, model){
+
+    const results = {}
+
+    // se a page for 1 no array vai ser index 0 
+    const startIndex = (page - 1) * limit
+    const endIndex = page * limit
+
+    // se a quantidade de itens da ultima pagina for maior que a quantidade de itens do DB nao tem proxima pagina
+    if(endIndex < model.length){
+        results.next = {
+            page: page+1,
+            limit: limit
+        }
+    }
+
+    // se nao estiver na primeira pagina...
+    if(startIndex > 0) {
+        results.previous = {
+            page: page-1,
+            limit: limit
+        }
+    }
+    if(page && limit){
+        results.results = model.slice(startIndex, endIndex)
+    } else {
+        results.results = model
+    }
+
+    return results
+}
+
+
+router.get('/', async (req, res) => {
+
+    const filter = req.query.filter
+
+    const page = parseInt(req.query.page)
+    const limit = parseInt(req.query.limit)
 
     if(!filter){
         const products = await Product.find({})
-        res.send(products)
+        const results = checkPagination(page, limit, products)
+        res.send(results)
     
     } else {
         const products = await Product.find({category: filter})
-        res.send(products)
-
+        const results = checkPagination(page, limit, products)
+        res.send(results)
     } 
     
 })

@@ -12,26 +12,21 @@ function Products(props) {
     const [filterCondition, setFilterCondition] = useState(null)
 
     const productList = useSelector(state => state.productList)
-    const {loading, products, error} = productList
+    const {loading, products, error, next, previous} = productList
 
     const dispatch = useDispatch()
 
+    const [page, setPage] = useState(1)
+    const limit = 12
+
     useEffect(() => {
-        
+
         setFilterCondition(getFilterFromUrl(props.location.search))
-
-        if(filterCondition) {
-            dispatch(listProducts(filterCondition))
-        } else {
-            dispatch(listProducts(null))
-        }
         
-    }, [dispatch, filterCondition, props])
-
-    
-    useEffect(() => {
-
-    }, [])
+        dispatch(listProducts(filterCondition, page, limit))
+        
+        
+    }, [dispatch, filterCondition, props, page, limit])
 
     
     return( 
@@ -44,7 +39,7 @@ function Products(props) {
             <div className="all-products">
                 
                 <div className="product-categories">
-                    <Link to="/products/" style={{ textDecoration: 'none' }}>
+                    <Link to="/products/?filter=All" style={{ textDecoration: 'none' }}>
                     <div className="category" onClick={(e) => setFilterCondition(null)}>
                         <h3>All</h3>
                     </div>
@@ -109,8 +104,8 @@ function Products(props) {
                 </div>
 
                 <div className="triangle-buttons">
-                    <div className="triangle-prev"></div>
-                    <div className="triangle-next"></div>
+                    {previous && <div onClick={() => setPage(page-1)} className="triangle-prev"></div>}
+                    {next && <div className="triangle-next" onClick={ () => setPage(page+1)}></div>}
                 </div>
             </div>
 

@@ -21,7 +21,7 @@ function HomePage() {
         dispatch(listProducts(null))
 
     }, [dispatch])
-
+    
 
     // carousel functions 
     const [counter, setCounter] = useState(0)
@@ -65,13 +65,11 @@ function HomePage() {
         const windowSize = verifyWindowSize()
 
         if(counter > 0) {
-            console.log(counter)
             setCounter(counter-1);
             carouselSlide.style.transform = 'translateX(' + (windowSize + ((-counter+1) * windowSize)) +'px)'
             
         } else {
             setCounter(qtyImages - 1)
-            console.log('counter =' + counter)
             carouselSlide.style.transform = 'translateX(' + (-windowSize * (counter + 1)) +'px)'
         }
         
@@ -176,7 +174,7 @@ function HomePage() {
                 </div>
 
                 <div>
-                    <Link to="/products"><button className="button">See More</button></Link>
+                    <Link to="/products/filter?=All"><button className="button">See More</button></Link>
                 </div>
             </div>
             

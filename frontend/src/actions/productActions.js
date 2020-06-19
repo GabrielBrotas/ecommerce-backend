@@ -2,21 +2,19 @@ import Axios from 'axios'
 import { PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_ITEM_REQUEST, PRODUCT_ITEM_SUCCESS, PRODUCT_ITEM_FAIL, PRODUCT_SAVE_REQUEST, PRODUCT_SAVE_SUCCESS, PRODUCT_SAVE_FAIL, PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS } from '../constants/productConstants'
 
 
-const listProducts = (filterCondition) => async (dispatch) => {
+const listProducts = (filterCondition, page, limit) => async (dispatch) => {
 
     try{
         dispatch({type: PRODUCT_LIST_REQUEST})
-        
-        if(filterCondition === null){
+        if(filterCondition === 'All' || filterCondition === null) {filterCondition= ''}
+        const {data} = await Axios.get('http://localhost:8081/products/?page='+page+'&limit='+limit+'&filter='+filterCondition)
 
-            const {data} = await Axios.get('http://localhost:8081/products/')
-            dispatch({type: PRODUCT_LIST_SUCCESS, payload: data})
+        const {results, next, previous} = data
 
-        } else {
-            const {data} = await Axios.get('http://localhost:8081/products/' + filterCondition)
-            dispatch({type: PRODUCT_LIST_SUCCESS, payload: data})
+        dispatch({type: PRODUCT_LIST_SUCCESS, results, next, previous})
+
+
         
-        }  
     
     } catch(error) {
         dispatch({type: PRODUCT_LIST_FAIL, payload: error.message})

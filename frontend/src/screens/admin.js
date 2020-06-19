@@ -22,15 +22,18 @@ function Admin(props) {
     const [carousel, setCarousel] = useState(false)
 
     const productList = useSelector(state=> state.productList)
-    const {loading, products, error} = productList
+    const {loading, products, error, next, previous} = productList
 
     const dispatch = useDispatch()
 
+    const [page, setPage] = useState(1)
+    const limit = 8
+
     useEffect(() => {
 
-        dispatch(listProducts(null))
+        dispatch(listProducts(null, page, limit))
 
-    }, [dispatch])
+    }, [dispatch, page, limit])
 
     const openForm = (product) => {
         setshowForm(!showForm)
@@ -197,7 +200,10 @@ function Admin(props) {
 
             </table>
 
-
+            <div className="triangle-buttons">
+                {previous && <div onClick={() => setPage(page-1)} className="triangle-prev"></div>}
+                {next && <div className="triangle-next" onClick={ () => setPage(page+1)}></div>}
+            </div>
             
 
         </main>
