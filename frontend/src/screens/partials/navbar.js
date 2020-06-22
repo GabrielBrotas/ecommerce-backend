@@ -98,9 +98,12 @@ function Navbar(){
                 
                 <ul className="navbar-ul-below navbar-hide">
 
-                    {userInfo ? <li onClick={logout}>Logout</li> : 
+                    {userInfo ? 
+                        <li onClick={logout}>Logout</li> : 
                     <Link to="/signin" style={{ textDecoration: 'none' }}><li>Sign in</li></Link>
                     }
+
+                    <Link to="/compras" style={{ textDecoration: 'none' }}><li>Compras</li></Link>
                     
 
                     <div className="shopping-car">

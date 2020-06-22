@@ -6,7 +6,7 @@ import mongoose from 'mongoose'
 
 import productsRouter from './routes/productsRouter.mjs'
 import usersRouter from './routes/usersRouter.mjs'
-
+import paymentsRouter from './routes/paymentsRouter.mjs'
 // database
 mongoose.connect('mongodb://localhost/products', {
     useNewUrlParser: true,
@@ -25,12 +25,13 @@ app.use(bodyParser.json())
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header('Access-Control-Allow-Methods', '*')
+    res.header('Access-Control-Allow-Methods', '*');
     next();
 });
 
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
+app.use('/payments', paymentsRouter)
 
 
 

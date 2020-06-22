@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import Paypal from '../screens/Paypal'
 
 import '../styles/shoppingCart.css'
 import { getIdAndQtyFromUrl } from '../helper'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart } from '../actions/cartActions'
+import { addToCart, removeFromCart, savePayment } from '../actions/cartActions'
 
 function Cart(props) {
     
@@ -18,6 +19,9 @@ function Cart(props) {
     const productId = url ? getIdAndQtyFromUrl(url)[0] : null
     const qty = url ? getIdAndQtyFromUrl(url)[1] : 1
         
+    const [amount, setAmount] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
+
     const dispatch = useDispatch()
 
     useEffect( () => {
@@ -28,8 +32,32 @@ function Cart(props) {
         
     }, [dispatch, productId, qty])
 
+
+    useEffect( () => {
+        setAmount(cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.qty, 0))
+        setTotalPrice((cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.price * currentValue.qty, 0)).toFixed(2))
+    }, [cartItems])
+
+
     const removeFromCartHandler = (productId) => {
         dispatch(removeFromCart(productId))
+    }
+
+    const transactionSuccess = (payment) => {
+        const { paid, paymentID} = payment
+
+        if(paid) {
+            dispatch(savePayment({email: userInfo.email, paymentID, cartItems}))
+            props.history.push('/')
+        }
+    }
+
+    const transactionCanceled = () => {
+        console.log('transaction canceled')
+    }
+
+    const transactionError = () => {
+        console.log('transaction error')
     }
     
     return(
@@ -71,11 +99,11 @@ function Cart(props) {
             <div className="buy-items-content">
 
                 <h3>Finalizar Compra</h3>
-                <h4>Qtd items: {cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.qty, 0)}</h4>
-                <h4>Preço Final: R$ {(cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.price * currentValue.qty, 0)).toFixed(2)}</h4>
+                <h4>Qtd items: {amount}</h4>
+                <h4>Preço Final: R$ {totalPrice}</h4>
                 {cartItems.length > 0 ? 
-                  userInfo ? <button onClick={() => alert('tem')} className="button-buy">Comprar Agora</button> :
-                  <button onClick={() => props.history.push('/signin')} className="button-buy">Comprar Agora</button>
+                  userInfo ? <Paypal toPay={totalPrice} amount={amount} onSuccess={transactionSuccess} transactionError={transactionError} /> :
+                  <button onClick={() => props.history.push('/signin')} className="button-buy">Cadastre se para Poder Comprar!</button>
                 :
                 <button className="button-buy" style={{backgroundColor: '#626263'}} disabled>Comprar Agora</button>
                 }

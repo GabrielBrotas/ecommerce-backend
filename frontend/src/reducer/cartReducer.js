@@ -1,4 +1,4 @@
-const {  CART_ADD_SUCCESS, CART_REMOVE_ITEM } = require("../constants/cartConstants");
+const {  CART_ADD_SUCCESS, CART_REMOVE_ITEM, CART_SAVE_PAYMENT } = require("../constants/cartConstants");
 
 
 function cartReducer(state = {cartItems: []}, action) {
@@ -23,6 +23,7 @@ function cartReducer(state = {cartItems: []}, action) {
 
         case CART_REMOVE_ITEM:
             return {cartItems: state.cartItems.filter( carrinho => carrinho.product !== action.payload)}
+
         default:
             return state
     }

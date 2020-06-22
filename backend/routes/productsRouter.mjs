@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 
     const page = parseInt(req.query.page)
     const limit = parseInt(req.query.limit)
-
+    
     if(!filter){
         const products = await Product.find({})
         const results = checkPagination(page, limit, products)
@@ -56,6 +56,7 @@ router.get('/', async (req, res) => {
     
 })
 
+
 router.get('/id/:id', async (req, res) => {
 
     const id = req.params.id
@@ -68,6 +69,7 @@ router.get('/id/:id', async (req, res) => {
     }
     
 })
+
 
 router.post('/', async (req, res) => {
 
@@ -95,6 +97,7 @@ router.post('/', async (req, res) => {
     
 })
 
+
 router.put('/:id', async (req, res) => {
 
     try{
@@ -119,14 +122,12 @@ router.put('/:id', async (req, res) => {
             }
         }
     
-        
-
     } catch(error){
         return res.status(500).send({message: 'error in update product'})
     }
-    
 
 })
+
 
 router.delete('/:id', async (req, res) => {
 
@@ -139,6 +140,7 @@ router.delete('/:id', async (req, res) => {
         res.send({message: 'error in delete item'})
     }
 })
+
 
 
 export default router

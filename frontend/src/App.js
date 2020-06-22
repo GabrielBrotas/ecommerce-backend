@@ -13,6 +13,7 @@ import Cart from './screens/shoppingCart'
 import Admin from './screens/admin'
 import Signin from './screens/signin'
 import Signup from './screens/signup'
+import Compras from './screens/compras'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
       <Navbar />
 
         <div className="content">
+          <Route path="/compras" render={(props) => <Compras {...props} />}></Route>
           <Route path="/signup" render={(props) => <Signup {...props} />}></Route>
           <Route path="/signin" render={(props) => <Signin {...props} />}></Route>
           <Route path="/admin" render={(props) => <Admin {...props} />} ></Route>
