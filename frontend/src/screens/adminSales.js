@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import '../styles/admin.css'
 import { useSelector, useDispatch } from 'react-redux'
@@ -14,14 +14,12 @@ function Sales(props){
 
     const dispatch = useDispatch()
 
-    const [page, setPage] = useState(1)
-    const limit = 8
 
     useEffect(() => {
 
         dispatch(listPayments(null))
 
-    }, [dispatch, page, limit])
+    }, [dispatch])
 
 
     const changeStatus = (id) => {

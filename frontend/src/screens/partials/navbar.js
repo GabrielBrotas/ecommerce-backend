@@ -41,26 +41,33 @@ function Navbar(){
         
     }, [inputBar])
 
-    function showNavbar(){
-        document.querySelector('.navbar-ul-above').classList.remove('navbar-hide')
-        document.querySelector('.navbar-ul-below').classList.remove('navbar-hide')
+    const showNavbar = () => {
+        const navBarAbove = document.querySelector('.navbar-ul-above')
+        const navBarBelow = document.querySelector('.navbar-ul-below')
 
-        document.querySelector('.navbar-ul-above').classList.add('navbar-show')
-        document.querySelector('.navbar-ul-below').classList.add('navbar-show')
+        navBarAbove.classList.remove('navbar-hide')
+        navBarBelow.classList.remove('navbar-hide')
+
+        navBarAbove.classList.add('navbar-show')
+        navBarBelow.classList.add('navbar-show')
 
         document.querySelector('.navbar-icon-close').classList.add('closeNavBar')
         
     }
 
-    function hideNavbar(){
-        document.querySelector('.navbar-ul-above').classList.add('navbar-hide')
-        document.querySelector('.navbar-ul-below').classList.add('navbar-hide')
+    const hideNavbar = () => {
+        const navBarAbove = document.querySelector('.navbar-ul-above')
+        const navBarBelow = document.querySelector('.navbar-ul-below')
 
-        document.querySelector('.navbar-ul-above').classList.remove('navbar-show')
-        document.querySelector('.navbar-ul-below').classList.remove('navbar-show')
+        navBarAbove.classList.add('navbar-hide')
+        navBarBelow.classList.add('navbar-hide')
+
+        navBarAbove.classList.remove('navbar-show')
+        navBarBelow.classList.remove('navbar-show')
 
         document.querySelector('.navbar-icon-close').classList.remove('closeNavBar')
     }
+    
 
     return(
         loading ? <div>Navbar loading...</div> :
@@ -69,11 +76,11 @@ function Navbar(){
         <header className="header">
     
             <div className="navbar-logo">
-                <Link to="/" ><img src="/images/logo.png" alt="logo"></img></Link>
+                <Link to="/"><div className="shieldLogo"></div></Link>
             </div>
 
             <div className="navbar-links above">
-                <ul className="navbar-ul-above navbar-hide">
+                <ul className="navbar-ul-above navbar-hide" >
                     <Link to="/products/?filter=All" style={{ textDecoration: 'none' }}><li>Products</li></Link>
                 </ul>
             </div>
@@ -96,28 +103,33 @@ function Navbar(){
 
             <div className="navbar-links rigth below">
                 
-                <ul className="navbar-ul-below navbar-hide">
+                <ul className="navbar-ul-below navbar-hide" >
 
                     {userInfo ? 
                         <li onClick={logout}>Logout</li> : 
-                    <Link to="/signin" style={{ textDecoration: 'none' }}><li>Sign in</li></Link>
+                    <Link to="/signin" style={{ textDecoration: 'none' }}>
+                        <li>Sign in</li>
+                    </Link>
                     }
                     {userInfo && <Link to="/compras" style={{ textDecoration: 'none' }}><li>Compras</li></Link>}
                     
                     
+                    <div className="shoppingCart">
 
-                    <div className="shopping-car">
-                        
-                        <Link to="/cart"><img src="/images/supermercado.png" alt="shopping car"></img></Link>
-                        {cartItems.length > 0 &&
-                        <Link to="/cart">
-                        <div className="items-in-car">
-                            
-                            {cartItems.length}
-                        </div>
-                        </Link>
-                        }
+                    <Link to="/cart" style={{ textDecoration: 'none' }}>
+                        <li>Carrinho</li>
+                    </Link>
+
+                    {cartItems.length > 0 &&
+                    <Link to="/cart" style={{ textDecoration: 'none' }}>
+                    <div className="items-in-car">
+                        {cartItems.length}
                     </div>
+                    </Link>
+                    }
+
+                    </div>  
+
 
                     {userInfo && userInfo.isAdmin && <Link to="/admin/products" style={{ textDecoration: 'none' }}><li>Admin</li></Link> }
                     
@@ -126,14 +138,17 @@ function Navbar(){
             </div>
             
             
-            <div className="mobileview" onClick={() => showNavbar()}>
+            <div className="mobileview" onClick={showNavbar}>
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
             </div>
 
-            <div className="navbar-icon-close" onClick={() => hideNavbar()}>
-                <img src="/images/cancelar.png" alt="navbar icon close"></img>
+            <div className="navbar-icon-close" onClick={hideNavbar}>
+               <div className="navbar-lines-close">
+                    <div className="line-close-one"></div>
+                    <div className="line-close-two"></div>
+               </div>
             </div>
         </header>
 

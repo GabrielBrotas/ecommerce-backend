@@ -31,8 +31,6 @@ router.post('/', async (req, res) => {
     const date = `${now.getDate()}/${parseInt(now.getMonth() +1)}/${now.getFullYear()}`
     try{
         const user = await User.findOne({email})
-        console.log('cartitme==')
-        console.log(cartItems)
 
         for(let i=0; i < cartItems.length; i++){
             
