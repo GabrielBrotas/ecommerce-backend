@@ -8,11 +8,17 @@ const router = express.Router()
 const now = new Date
 
 
-router.get('/:userId', async (req, res) => {
+router.get('/:userId?', async (req, res) => {
     try{
         const userId = req.params.userId
-        const payment = await Payment.find({userId})
-        res.send(payment)
+        if (userId){
+            const payment = await Payment.find({userId})
+            res.send(payment)
+        } else {
+            const payment = await Payment.find({})
+            res.send(payment)
+        }
+        
     } catch(error) {
         res.status(500).send({message: 'erro === ' + error})
     }
@@ -62,5 +68,28 @@ router.post('/', async (req, res) => {
     
     
 })
+
+
+router.delete('/:id', async (req, res) => {
+    const payment = await Payment.findById(req.params.id)
+    if(payment){
+        await payment.remove()
+        res.send({message: 'product deleted'})
+    } else {
+        res.send({message: 'error in delete item'})
+    }
+})
+
+router.put('/:id', async (req, res) => {
+    const payment = await Payment.findById(req.params.id)
+    if(payment){
+        payment.delivered = !payment.delivered;
+        const updatedPayment = await payment.save()
+        res.status(200).send({message:'payment updated', data: updatedPayment})
+    } else {
+        res.status(500).send({message: 'error in delete item'})
+    }
+})
+
 
 export default router

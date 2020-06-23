@@ -100,6 +100,9 @@ function HomePage() {
                                 <img className="image-carousel" src={product.image} alt='Carousel Foto'></img>
                             </div>
                             
+                            <div>
+                                <Link to={'product/'+product._id}><button>Comprar</button></Link>
+                            </div>
                         </div>
 
                     ))}

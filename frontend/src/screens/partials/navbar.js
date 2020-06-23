@@ -119,7 +119,7 @@ function Navbar(){
                         }
                     </div>
 
-                    {userInfo && userInfo.isAdmin && <Link to="/admin" style={{ textDecoration: 'none' }}><li>Admin</li></Link> }
+                    {userInfo && userInfo.isAdmin && <Link to="/admin/products" style={{ textDecoration: 'none' }}><li>Admin</li></Link> }
                     
                     
                 </ul>

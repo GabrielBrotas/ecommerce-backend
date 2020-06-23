@@ -34,6 +34,11 @@ const paymentsSchema = new mongoose.Schema({
     date: {
         type: String,
         required: true
+    },
+    delivered: {
+        type: Boolean,
+        required: true,
+        default: false,
     } 
     
 })

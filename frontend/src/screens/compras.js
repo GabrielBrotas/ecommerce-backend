@@ -55,8 +55,7 @@ function Compras(props){
                             <td>{payment.amount}</td>
                             <td>R$ {payment.totalPrice}</td>
                             <td>{payment.date}</td>
-                            <td>Pendente</td>
-
+                            <td>{!payment.delivered ? 'Pendente' : 'Entregue'}</td>
                         </tr>
                     ))} 
                 </tbody>
