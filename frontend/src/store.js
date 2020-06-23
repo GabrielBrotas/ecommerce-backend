@@ -5,12 +5,13 @@ import { cartReducer } from './reducer/cartReducer'
 
 import Cookie from 'js-cookie'
 import { userRegisterReducer, userSigninReducer } from './reducer/userReducer'
-import { addressReducer } from './reducer/addressReducer'
 
+
+const addressInfo = Cookie.getJSON('addressInfo') || {}
 const cartItems = Cookie.getJSON('cartItems') || []
 const userInfo = Cookie.getJSON('userInfo') || null
 
-const initialState = {cartList: {cartItems}, userSignin: {userInfo}}
+const initialState = {cartList: {cartItems, addressInfo}, userSignin: {userInfo}}
 
 const reducer = combineReducers({
     productList: productListReducer,
@@ -20,7 +21,6 @@ const reducer = combineReducers({
     userRegister: userRegisterReducer,
     userSignin: userSigninReducer,
     paymentList: paymentListReducer,
-    addressInfo: addressReducer,
 })
 
 

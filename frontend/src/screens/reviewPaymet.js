@@ -8,21 +8,16 @@ import { savePayment } from '../actions/cartActions'
 function ReviewPayment(props) {
     
     const cart = useSelector(state => state.cartList)
-    const {cartItems} = cart
+    const {cartItems, addressInfo} = cart
 
     const userSignin = useSelector(state => state.userSignin)
     const {userInfo} = userSignin
-
-    const addressInfo = useSelector(state => state.addressInfo)
-    const {address} = addressInfo
-
-    console.log(address)
 
     const [amount, setAmount] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
 
     const dispatch = useDispatch()
-
+    // console.log(props.addressTest)
 
     useEffect( () => {
         setAmount(cartItems.reduce( (accumulator, currentValue) => accumulator + currentValue.qty, 0))
@@ -33,7 +28,7 @@ function ReviewPayment(props) {
     const transactionSuccess = (payment) => {
         const { paid, paymentID } = payment
         if(paid) {
-            dispatch(savePayment({email: userInfo.email, paymentID, cartItems}))
+            dispatch(savePayment({email: userInfo.email, paymentID, cartItems, addressInfo}))
             props.history.push('/')
         }
     }
@@ -55,42 +50,42 @@ function ReviewPayment(props) {
                     
                     <div className="address-info">
                         <label>Para</label>
-                        <input value={address.name} readOnly></input>
+                        <input value={addressInfo.name} readOnly></input>
                     </div>
 
                     <div className="address-info">
                         <label>cep</label>
-                        <input value={address.cep} readOnly></input>
+                        <input value={addressInfo.cep} readOnly></input>
                     </div>
 
                     <div className="address-info">
                         <label>Estado</label>
-                        <input value={address.uf} readOnly></input>
+                        <input value={addressInfo.uf} readOnly></input>
                     </div>
 
                     <div className="address-info">
                         <label>Cidade</label>
-                        <input value={address.localidade} readOnly></input>
+                        <input value={addressInfo.localidade} readOnly></input>
                     </div>
 
                     <div className="address-info">
                         <label>bairro</label>
-                        <input value={address.bairro} readOnly></input>
+                        <input value={addressInfo.bairro} readOnly></input>
                     </div>
 
                     <div className="address-info">
                         <label>Endereço</label>
-                        <input value={address.logradouro} readOnly></input>
+                        <input value={addressInfo.logradouro} readOnly></input>
                     </div>
 
                     <div className="address-info">
                         <label>Numero</label>
-                        <input value={address.number} readOnly></input>
+                        <input value={addressInfo.number} readOnly></input>
                     </div>
                     
                     <div className="address-info">
                         <label>Telefone para contato</label>
-                        <input value={address.phone} readOnly></input>
+                        <input value={addressInfo.phone} readOnly></input>
                     </div>
 
                 </div>

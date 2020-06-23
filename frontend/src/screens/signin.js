@@ -18,14 +18,19 @@ function Signin(props) {
     useEffect( () => {
 
         if(userInfo) {
-            props.history.push('/')
+            if(props.location.search){
+                props.history.push('/cart')
+            } else {
+                props.history.push('/')
+            }
+            
         }
 
         return () => {
             //
         }
 
-    }, [userInfo, props.history])
+    }, [userInfo, props.history, props.location.search])
 
 
     const submitHandler = (e) => {

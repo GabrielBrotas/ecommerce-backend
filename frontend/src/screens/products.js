@@ -28,7 +28,7 @@ function Products(props) {
         
     }, [dispatch, filterCondition, props, page, limit])
 
-    
+
     return( 
         loading ? <div>Loading...</div>
         :
@@ -40,31 +40,31 @@ function Products(props) {
                 
                 <div className="product-categories">
                     <Link to="/products/?filter=All" style={{ textDecoration: 'none' }}>
-                    <div className="category" onClick={(e) => setFilterCondition(null)}>
+                    <div className="category" onClick={(e) => {setFilterCondition(null); setPage(1)}}>
                         <h3>All</h3>
                     </div>
                     </Link>
 
                     <Link to="/products/?filter=Game" style={{ textDecoration: 'none' }}>
-                        <div className="category" id="Game" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
+                        <div className="category" id="Game" onClick={(e) => {setFilterCondition(e.currentTarget.id); setPage(1)}}>
                             <h3>Games</h3>
                         </div>
                     </Link>
 
                     <Link to="/products/?filter=Controle" style={{ textDecoration: 'none' }}>
-                    <div className="category" id="Controle" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
+                    <div className="category" id="Controle" onClick={(e) => {setFilterCondition(e.currentTarget.id); setPage(1)}}>
                         <h3>Controllers</h3>
                     </div>
                     </Link>
 
                     <Link to="/products/?filter=Console" style={{ textDecoration: 'none' }}>
-                    <div className="category" id="Console" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
+                    <div className="category" id="Console" onClick={(e) => {setFilterCondition(e.currentTarget.id); setPage(1)}}>
                         <h3>Consoles</h3>
                     </div>
                     </Link>
 
                     <Link to="/products/?filter=Outros" style={{ textDecoration: 'none' }}>
-                    <div className="category" id="Outros" onClick={(e) => setFilterCondition(e.currentTarget.id)}>
+                    <div className="category" id="Outros" onClick={(e) => {setFilterCondition(e.currentTarget.id); setPage(1)}}>
                         <h3>Others</h3>
                     </div>
                     </Link>

@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAddress } from '../actions/addressActions'
-
+import {Link} from 'react-router-dom'
+import { getAddress } from '../actions/cartActions'
 
 function Address(props) {
 
     const userSignin = useSelector(state => state.userSignin)
     const {userInfo} = userSignin
 
-    const addressInfo = useSelector(state => state.addressInfo)
-    const {address, apiRequest} = addressInfo
-
     const dispatch = useDispatch()
 
     useEffect( () => {
-
         if(!userInfo) {
             props.history.push('/')
         }
-
         return () => {
             //
         }
-
     }, [userInfo, props.history])
 
 
@@ -36,38 +30,18 @@ function Address(props) {
     const [phone, setPhone] = useState('')
 
     useEffect( () => {
-        const addressData = {cep, uf, localidade, bairro, logradouro, name, number, phone}
-        dispatch(getAddress(cep, addressData))
-        
+        const address = {cep, uf, localidade, bairro, logradouro, name, number, phone}
+        dispatch(getAddress(address))
     }, [dispatch, cep, bairro, uf, localidade, logradouro, name, phone, number])
 
-    useEffect( () => {
-
-        if(apiRequest) {
-            setUf(address.uf)
-            setLocalidade(address.localidade)
-            setBairro(address.bairro)
-            setLogradouro(address.logradouro)
-            address.name = name
-            address.number = number
-            address.phone = phone
-        }
-       
-    }, [address, cep, name, phone, number, apiRequest])
-
-
-    const submitHandler = () => {
-        props.history.push('/reviewPayment/')
-    }
 
     return(
-
         <main className="main">
             
             <div className="user-content">
                 <h3 className="user-title">Endereço de entrega</h3>
 
-                <form onSubmit={submitHandler}>
+                <form >
                     <ul className="user-form">
                         
                         <li>
@@ -77,7 +51,7 @@ function Address(props) {
 
                         <li>
                             <label htmlFor="cep">Cep</label>
-                            <input value={cep} onChange={(e) => setCep(e.target.value)} name="cep" type="number" ></input>
+                            <input value={cep} onChange={(e) => setCep(e.target.value)} name="cep" type="text" ></input>
                         </li>
 
                         <li>
@@ -111,7 +85,7 @@ function Address(props) {
                         </li>
 
                         <li>
-                            <button>Confirmar endereço</button>
+                            <Link to="/reviewPayment"><button>Confirmar endereço</button></Link>
                         </li>
                     </ul>
 

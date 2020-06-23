@@ -9,3 +9,11 @@
 
 // const cep = '42808121'
 // console.log(cep.length)
+
+const objeto = {total: 5}
+
+console.log(objeto)
+
+objeto.total -= 5 
+
+console.log(objeto)

@@ -10,6 +10,10 @@ const paymentsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    productId: {
+        type: String,
+        required: true
+    },
     product: {
         type: String,
         required: true
@@ -21,6 +25,10 @@ const paymentsSchema = new mongoose.Schema({
     },
     totalPrice: {
         type: Number,
+        required: true
+    },
+    address: {
+        type: Object,
         required: true
     },
     date: {

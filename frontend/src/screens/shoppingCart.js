@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Paypal from '../screens/Paypal'
+
 
 import '../styles/shoppingCart.css'
 import { getIdAndQtyFromUrl } from '../helper'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart, savePayment } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 function Cart(props) {
     
@@ -92,7 +92,7 @@ function Cart(props) {
                     // <Paypal toPay={totalPrice} amount={amount} onSuccess={transactionSuccess} transactionError={transactionError} />
                     <button onClick={() => props.history.push('/address')} className="button-buy">Comprar!</button> 
                     :
-                    <button onClick={() => props.history.push('/signin')} className="button-buy">Comprar!</button>
+                    <button onClick={() => props.history.push('/signin?logged=false')} className="button-buy">Comprar!</button>
                 
                 : <div></div>
                 }
