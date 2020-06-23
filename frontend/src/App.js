@@ -14,6 +14,8 @@ import Admin from './screens/admin'
 import Signin from './screens/signin'
 import Signup from './screens/signup'
 import Compras from './screens/compras'
+import Address from './screens/address'
+import ReviewPayment from './screens/reviewPaymet';
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
       <Navbar />
 
         <div className="content">
+          <Route path="/reviewPayment" render={(props) => <ReviewPayment {...props} />}></Route>
+          <Route path="/address" render={(props) => <Address {...props} />}></Route>
           <Route path="/compras" render={(props) => <Compras {...props} />}></Route>
           <Route path="/signup" render={(props) => <Signup {...props} />}></Route>
           <Route path="/signin" render={(props) => <Signin {...props} />}></Route>

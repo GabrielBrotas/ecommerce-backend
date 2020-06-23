@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {listPayments} from '../actions/productActions'
 
@@ -17,17 +17,21 @@ function Compras(props){
     // const limit = 8
 
     useEffect(() => {
-
-        dispatch(listPayments(userInfo._id))
+        if(userInfo) {
+            dispatch(listPayments(userInfo._id))
+        } else {
+            props.history.push('/')
+        }
         
-    }, [])
-    console.log(payments)
+    }, [userInfo, dispatch, props.history])
+
+
     return(
         loading ? <div>Loading...</div>
         :
         error ? <div>Erro: {error} </div> 
         :
-
+ 
         <main className="main-content">
 
             <table className="admin-table">
@@ -39,6 +43,7 @@ function Compras(props){
                         <th>Quantidade</th>
                         <th>Preço Total</th>
                         <th>Data</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
 
@@ -50,6 +55,7 @@ function Compras(props){
                             <td>{payment.amount}</td>
                             <td>R$ {payment.totalPrice}</td>
                             <td>{payment.date}</td>
+                            <td>Pendente</td>
 
                         </tr>
                     ))} 
@@ -64,7 +70,7 @@ function Compras(props){
             
 
         </main>
-        
+       
     )
 }
 

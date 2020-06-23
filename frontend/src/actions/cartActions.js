@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import Cookie from 'js-cookie'
 
-import { CART_ADD_SUCCESS, CART_REMOVE_ITEM, CART_SAVE_PAYMENT } from '../constants/cartConstants'
+import { CART_ADD_SUCCESS, CART_REMOVE_ITEM} from '../constants/cartConstants'
 
 
 
@@ -45,7 +45,7 @@ const savePayment = (paymentInfo) => async (dispatch) => {
 
     try{
 
-        const {data} = await Axios.post('http://localhost:8081/payments', paymentInfo)
+        await Axios.post('http://localhost:8081/payments', paymentInfo)
 
         Cookie.remove('cartItems')
         alert("Obrigado por comprar na Game Store!")
@@ -57,5 +57,7 @@ const savePayment = (paymentInfo) => async (dispatch) => {
     }
     
 }
+
+
 
 export {addToCart, removeFromCart, savePayment}

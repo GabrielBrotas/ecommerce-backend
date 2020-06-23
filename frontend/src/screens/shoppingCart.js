@@ -43,22 +43,6 @@ function Cart(props) {
         dispatch(removeFromCart(productId))
     }
 
-    const transactionSuccess = (payment) => {
-        const { paid, paymentID} = payment
-
-        if(paid) {
-            dispatch(savePayment({email: userInfo.email, paymentID, cartItems}))
-            props.history.push('/')
-        }
-    }
-
-    const transactionCanceled = () => {
-        console.log('transaction canceled')
-    }
-
-    const transactionError = () => {
-        console.log('transaction error')
-    }
     
     return(
 
@@ -101,11 +85,16 @@ function Cart(props) {
                 <h3>Finalizar Compra</h3>
                 <h4>Qtd items: {amount}</h4>
                 <h4>Preço Final: R$ {totalPrice}</h4>
-                {cartItems.length > 0 ? 
-                  userInfo ? <Paypal toPay={totalPrice} amount={amount} onSuccess={transactionSuccess} transactionError={transactionError} /> :
-                  <button onClick={() => props.history.push('/signin')} className="button-buy">Cadastre se para Poder Comprar!</button>
-                :
-                <button className="button-buy" style={{backgroundColor: '#626263'}} disabled>Comprar Agora</button>
+
+                {cartItems.length > 0 ?
+
+                    userInfo ? 
+                    // <Paypal toPay={totalPrice} amount={amount} onSuccess={transactionSuccess} transactionError={transactionError} />
+                    <button onClick={() => props.history.push('/address')} className="button-buy">Comprar!</button> 
+                    :
+                    <button onClick={() => props.history.push('/signin')} className="button-buy">Comprar!</button>
+                
+                : <div></div>
                 }
                 
 

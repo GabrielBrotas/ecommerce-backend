@@ -102,8 +102,8 @@ function Navbar(){
                         <li onClick={logout}>Logout</li> : 
                     <Link to="/signin" style={{ textDecoration: 'none' }}><li>Sign in</li></Link>
                     }
-
-                    <Link to="/compras" style={{ textDecoration: 'none' }}><li>Compras</li></Link>
+                    {userInfo && <Link to="/compras" style={{ textDecoration: 'none' }}><li>Compras</li></Link>}
+                    
                     
 
                     <div className="shopping-car">
