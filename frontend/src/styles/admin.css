@@ -10,6 +10,44 @@
     margin-top: 10rem;
     width: 100%;
 }
+.admin-main{
+    margin-top: 2rem;
+    width: 100%;
+    text-align: -webkit-center;
+}
+
+/* admin navbar  */
+.admin-navbar{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #121212;
+    height: 4rem;
+    font-family: 'Open Sans', sans-serif;
+    list-style: none;
+    padding: 0;
+}
+.admin-navbar a{
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+}
+.admin-navbar li{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    color: #ccc;
+    border-bottom-color: #0078f2;
+    transition: .2s ease-in-out;
+    border-bottom: 0px;
+}
+
+.admin-navbar li:hover, #navbar-sales:hover, #navbar-product:hover{
+    color: #fff;
+    border-bottom: 4px;
+    border-bottom: 4px solid #0078f2;
+}
+/*  */
+
 .compras-info-content{
     margin-left: 5rem;
     margin-right: 5rem;
@@ -19,30 +57,28 @@
 .compras-info-content h2{
     margin-left: 0;
 }
+
+/* add new item button   */
 .newItemDiv{
+    margin-left: 5rem;
     margin-bottom: 2rem;
 }
 
-.newItem {
-	box-shadow:inset 0px 1px 0px 0px #54a3f7;
-	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
-	background-color:#007dc1;
-	border-radius:3px;
-	border:1px solid #124d77;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-family:Arial;
-	font-size:13px;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #154682;
-}
-.newItem:hover {
-	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
-	background-color:#0061a7;
+.newItemDiv button{
+    background-color: #0078f2;
+    color: #f7f6f6;
+    font-weight: 550;
 }
 
+.newItemDiv button:hover{
+    background-color: #0160c2;
+    color: #fff;
+}
+
+/*  */
+
+
+/* admin table */
 .admin-table{
     border-collapse: collapse;
     margin: 5rem;
@@ -50,7 +86,14 @@
 
 @media screen and (max-width: 550px){
     .admin-table{
+        margin: 0;
         font-size: xx-small;
+    }
+    .compras-info-content{
+        margin: 0;
+        margin-bottom: 5rem;
+        width: 100%;
+        text-align: center;
     }
 }
 .admin-table th{
@@ -79,8 +122,17 @@ text-align: center;
 background-color: #0078f2;
 font-weight: normal;
 color: #fff;
+font-weight: 600;
 }
 
+.admin-table-actions{
+    display: flex;
+    flex-wrap: wrap;
+}
+.admin-table-actions button{
+    margin: 1rem;
+    flex: 1;
+}
 .delete-button {
 	box-shadow:inset 0px 1px 0px 0px #cf866c;
 	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
@@ -123,43 +175,54 @@ color: #fff;
 	background-color:#ffab23;
 }
 
+/* section add new item */
 .itemConfig-content{
     margin: 5rem;
     display: flex;
     flex: 1;
     flex-direction: column;
-    background-color: oldlace;
-    border-radius: 3rem;
+    background-color: #202020;
+    color: #ccc;  
+    font-family: 'Open Sans', sans-serif;
 }
 
 .itemConfig-content h3{
     text-align: center;
-    border-bottom-style: ridge;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 2rem;
     margin-right: 5rem;
     margin-left: 5rem;
 }
 
 .itemConfig-form{
-    background-color: #fbfef9;
+    background-color: #202020;
     display: flex;
     flex-direction: column;
     margin: 2rem auto;
     width: 50%;
-    border-radius: 3rem;
     list-style-type: none;
-    
 }
 
 .itemConfig-form li {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0 1rem;
-    margin-right: 4rem;
 }
 
 .itemConfig-form label{
     margin: .5rem;
 }
+
+.itemConfig-form input, .itemConfig-form textarea, .itemConfig-form select{
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.new-item-button{
+    margin: 2rem 0;
+}
+
 
 .admin-button {
     box-shadow: 0px 1px 0px 0px #f0f7fa;

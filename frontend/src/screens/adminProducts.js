@@ -79,8 +79,8 @@ function Admin(props) {
 
         userInfo && userInfo.isAdmin ? 
         
-        <main className="main">
-
+        
+        <>
             {showForm && 
             <div className="itemConfig-content">
                 <h3 className="itemConfig-title">
@@ -144,10 +144,10 @@ function Admin(props) {
                             <input name="image" type="text" placeholder="imagem path..." value={image} onChange={(e) => setImage(e.target.value)} required></input>
                         </li>
 
-                        <li>
+                        <li className="new-item-button">
                             <button className="admin-button">{id ? 'Editar' : 'Adicionar'}</button>
                         </li>
-                        <li>
+                        <li className="new-item-button">
                             <button className="admin-button-cancel" onClick={() => openForm({})}>Cancelar</button>
                         </li>
 
@@ -159,7 +159,7 @@ function Admin(props) {
             }
 
             <div className="newItemDiv">
-                <button className="newItem" onClick={() => openForm({})}> Adicionar novo Item</button>
+                <button className="button" onClick={() => openForm({})}> Adicionar novo Item</button>
             </div>
 
             <table className="admin-table">
@@ -184,7 +184,7 @@ function Admin(props) {
                             <td>{product.price}</td>
                             <td>{product.countInStock}</td>
                             <td className="tr-description">{product.description}</td>
-                            <td>
+                            <td className="admin-table-actions">
                                 <button className="edit-button" onClick={() => openForm(product)}>Editar</button>
                                 <button className="delete-button" onClick={ () => deleteHandler(product._id)}>Deletar</button>
                             </td>
@@ -200,7 +200,7 @@ function Admin(props) {
             </div>
             
 
-        </main>
+        </>
         :
         <div>
             {props.history.push('/')}

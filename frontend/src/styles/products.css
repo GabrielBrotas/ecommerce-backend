@@ -93,6 +93,7 @@ a{
     margin-bottom: 3rem;
     display: flex;
     align-self: center;
+    justify-content: center;
 }
 
 .triangle-next{

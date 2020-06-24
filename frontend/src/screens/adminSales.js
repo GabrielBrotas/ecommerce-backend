@@ -67,18 +67,13 @@ function Sales(props){
                             </td>
                             <td>{payment.delivered ? 'sim' : 'nao'}</td>
                             <td>
-                                <button onClick={() => changeStatus(payment._id)}>Entregue</button>
+                                <button className="admin-button" onClick={() => changeStatus(payment._id)}>Entregue</button>
                             </td>
                         </tr>
                     ))} 
                 </tbody>
 
-            </table>
-
-            {/* <div className="triangle-buttons">
-                {previous && <div onClick={() => setPage(page-1)} className="triangle-prev"></div>}
-                {next && <div className="triangle-next" onClick={ () => setPage(page+1)}></div>}
-            </div> */}
+            </table>    
             
 
         </main>

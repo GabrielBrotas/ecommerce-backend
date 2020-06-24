@@ -61,7 +61,7 @@ body{
 
 .navbar-links li{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     width: 7rem;
     height: 7rem;
