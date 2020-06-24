@@ -39,7 +39,7 @@ function ReviewPayment(props) {
     }
     
     return(
-
+        userInfo ? 
         <main className="main">
             <h3 className="main-h3">REVIEW PAYMENT</h3>
         <div className="reviewpayment-content">
@@ -156,6 +156,10 @@ function ReviewPayment(props) {
 
         </div>
         </main>
+        :
+        <div>
+            {props.history.push('/')}
+        </div>
     )
 }
 
