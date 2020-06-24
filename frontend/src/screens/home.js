@@ -100,8 +100,8 @@ function HomePage() {
                                 <img className="image-carousel" src={product.image} alt='Carousel Foto'></img>
                             </div>
                             
-                            <div>
-                                <Link to={'product/'+product._id}><button>Comprar</button></Link>
+                            <div className="box-buy">
+                                <Link to={'product/'+product._id} style={{ textDecoration: 'none' }}>Saiba Mais</Link>
                             </div>
                         </div>
 
@@ -156,7 +156,6 @@ function HomePage() {
             <div className="bests-sellers-content">
                 
                 <h2>Mais Vendidos</h2>
-
                 <div className="box-best-products">
                     
                     {products.map(product => (

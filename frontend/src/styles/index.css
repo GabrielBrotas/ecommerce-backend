@@ -1,8 +1,9 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 /* Main */
 .main{
     width: 100%;
     max-width: 1500px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* main carousel */
@@ -11,7 +12,7 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
-
+    margin-top: 5rem;
 }
 
 .slide-container {
@@ -67,24 +68,37 @@
 
 .box-buy {
     position: relative;
-    background-color: #067eca;
-    width: 40%;
-    height: 7rem;
+    background-color: #2a2a2a;
+    width: 15%;
+    height: 5rem;
     display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     max-width: 150px;
-    border-radius: 20rem;
     cursor: pointer;
-    transition: .2s ease-out
+    transition: .2s ease-out;
+    bottom: 10rem;
+}
+.box-buy a{
+    height: 5rem;
+    font-weight: 600;
+    color: #d6d6d6;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.box-buy:hover {
-    background-color: #282d65;
-    color: white;
+.box-buy a:hover {
+    color: #fff;
+    background-color: #121212;
 }
+
+
 @media screen and (max-width: 575px) {
     .box-buy {
         bottom: 7rem;
@@ -130,7 +144,8 @@
     height: 100%;
     flex:1;
     align-items: flex-start;
-    background-image: linear-gradient(#FBFEF9, #5254a7);
+    background-color: #2A2A2A;
+    color: #d6d6d6;
     max-width: 1500px;
     margin: 25px;
     transition: .5s ease-in-out;
@@ -152,12 +167,15 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    margin: 2rem;
-    background-image: linear-gradient(#282d65, #5254a7);
+    margin: 8rem 2.3rem 8rem;
+    background-color: #2A2A2A;
+    color: #d6d6d6;
 }
 
 .bests-sellers-content h2 {
-    color: #f7f6f6
+    color: #d6d6d6;
+    margin: 4rem 0 3rem;
+    font-size: xx-large;
 }
 
 .box-best-products{
@@ -193,7 +211,7 @@
 }
 
 .button {
-    background-color: #282d65; /* Green */
+    background-color: #2a2a2a;
     font-weight: bold;
     border: none;
     color: white;
@@ -202,14 +220,18 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: .5rem 0 3.5rem;
     cursor: pointer;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-color: rgba(255, 255, 255, 0.2);
+    border-style: solid;
+    border-width: 0.06rem;
 }
 .button:hover{
-    background-color: #1f256e;
-    transform: scale(1.1);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.45);
+    background-color: #121212;
     
 }
