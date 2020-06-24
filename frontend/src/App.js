@@ -24,7 +24,7 @@ function App() {
       
       <Navbar />
 
-        <div className="content">
+        
           <Route path="/reviewPayment" render={(props) => <ReviewPayment {...props} />}></Route>
           <Route path="/address" render={(props) => <Address {...props} />}></Route>
           <Route path="/compras" render={(props) => <Compras {...props} />}></Route>
@@ -35,7 +35,7 @@ function App() {
           <Route path="/product" render={(props) => <Product {...props} />} />
           <Route path="/products" render={(props) => <Products {...props} />} />
           <Route path="/" exact={true} render={(props) => <HomePage {...props} />} />
-        </div>
+        
       
       <Footer />
 

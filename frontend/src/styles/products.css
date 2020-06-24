@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 /* Main */
 .main{
     width: 100%;
@@ -14,26 +14,33 @@ a{
 .product-categories{
     display: flex;
     justify-content: space-evenly;
-    background-color: azure;
+    background-color: #121212;
     margin-bottom: 3rem;
+    height: 7rem;
+    font-family: 'Open Sans', sans-serif;
+    
 }
 
 .product-categories a {
     width: 100%;
-    color: #0f0e0e;
+    display: flex;
 }
 
 .category{
     display: flex;
     width: 100%;
-    transition: all .2s ease-in-out;
     justify-content: center;
+    width: 100%;
+    color: #ccc;
+    border-bottom-color: #0078f2;
+    transition: .2s ease-in-out;
 }
 
-.product-categories a:hover{
-    background-color: #adb9d2;;
-    color:#282d65;
+.category:hover{
+    background-color: #202020;
+    color:#fff;
     cursor: pointer;
+    border-bottom: 4px solid #0078f2;
     
 }
 /* mais vendidos box */
@@ -44,6 +51,7 @@ a{
     display: flex;
     flex-direction: column;
     margin: 2rem;
+    margin-top: 10rem;
 }
 
 .all-products h2 {

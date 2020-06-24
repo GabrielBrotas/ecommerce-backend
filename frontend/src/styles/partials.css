@@ -35,6 +35,7 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
+
 .navbar-logo{
     height: 5rem;
     display: flex;
@@ -69,6 +70,7 @@ body{
     text-decoration: none;
     transition: .1s ease-in-out;
     cursor: pointer;
+    border-bottom-color: #0078f2;
 }
 
 .navbar-links li:hover{
@@ -297,14 +299,16 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5rem;
+    height: 9rem;
     max-width: 1500px;
     font-size: 1.1rem;
 }
 
-.footer p {
+.footer p{
     color: #ccc;
     text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .footer a{

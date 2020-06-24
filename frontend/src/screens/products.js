@@ -22,11 +22,32 @@ function Products(props) {
     useEffect(() => {
 
         setFilterCondition(getFilterFromUrl(props.location.search))
-        
         dispatch(listProducts(filterCondition, page, limit))
         
-        
+        // filter.style = 'background-color: #fff'
+
     }, [dispatch, filterCondition, props, page, limit])
+
+    useEffect( () => {
+
+        if(!loading){
+            // css para o filtro clicado
+            var filter;
+            if(filterCondition === 'All' || null){
+                filter = document.getElementById('All')
+                filter.style.backgroundColor = "#202020"
+                filter.style.borderBottom = "4px solid #0078f2"
+            } else if (filterCondition){
+                filter = document.querySelector('#'+filterCondition)
+                filter.style.backgroundColor = "#202020"
+                filter.style.borderBottom = "4px solid #0078f2"
+            }
+            
+            
+        }
+       
+        
+    }, [filterCondition, loading])
 
 
     return( 
@@ -40,7 +61,7 @@ function Products(props) {
                 
                 <div className="product-categories">
                     <Link to="/products/?filter=All" style={{ textDecoration: 'none' }}>
-                    <div className="category" onClick={(e) => {setFilterCondition(null); setPage(1)}}>
+                    <div className="category" id="All" onClick={(e) => {setFilterCondition(null); setPage(1)}}>
                         <h3>All</h3>
                     </div>
                     </Link>

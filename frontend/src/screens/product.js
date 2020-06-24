@@ -75,7 +75,7 @@ function Product(props) {
                     <h4>R$ {(product.price * qty).toFixed(2)}</h4>
                 </div>
                             
-                {product.countInStock > 0 ? <button onClick={AddtoCart}> Add to Cart</button> 
+                {product.countInStock > 0 ? <button className="button" onClick={AddtoCart}> Add to Cart</button> 
                 :   <button disabled>Out of Stock</button>
                 }
 
