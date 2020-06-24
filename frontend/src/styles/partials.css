@@ -61,7 +61,7 @@ body{
 
 .navbar-links li{
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     width: 7rem;
     height: 7rem;
@@ -218,7 +218,8 @@ body{
 
     .navbar-links li{
         cursor: pointer;
-        height: 3rem;        
+        height: 3rem;   
+        justify-content: left;     
     }
 
     .above ul{

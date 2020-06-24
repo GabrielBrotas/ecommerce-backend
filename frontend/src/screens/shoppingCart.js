@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 
-import '../styles/shoppingCart.css'
+import '../styles/reviewPayment.css'
 import { getIdAndQtyFromUrl } from '../helper'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart, removeFromCart } from '../actions/cartActions'

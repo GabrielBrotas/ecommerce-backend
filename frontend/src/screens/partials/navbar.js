@@ -105,15 +105,6 @@ function Navbar(){
                 
                 <ul className="navbar-ul-below navbar-hide" >
 
-                    {userInfo ? 
-                        <li onClick={logout}>Logout</li> : 
-                    <Link to="/signin" style={{ textDecoration: 'none' }}>
-                        <li>Sign in</li>
-                    </Link>
-                    }
-                    {userInfo && <Link to="/compras" style={{ textDecoration: 'none' }}><li>Compras</li></Link>}
-                    
-                    
                     <div className="shoppingCart">
 
                     <Link to="/cart" style={{ textDecoration: 'none' }}>
@@ -128,7 +119,20 @@ function Navbar(){
                     </Link>
                     }
 
-                    </div>  
+                    </div> 
+
+                    {userInfo && <Link to="/compras" style={{ textDecoration: 'none' }}><li>Compras</li></Link>}
+
+                    {userInfo ? 
+                        <li onClick={logout}>Logout</li> : 
+                    <Link to="/signin" style={{ textDecoration: 'none' }}>
+                        <li>Sign in</li>
+                    </Link>
+                    }
+                    
+                    
+                    
+                     
 
 
                     {userInfo && userInfo.isAdmin && <Link to="/admin/products" style={{ textDecoration: 'none' }}><li>Admin</li></Link> }

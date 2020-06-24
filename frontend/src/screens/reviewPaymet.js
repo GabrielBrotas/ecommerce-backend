@@ -41,58 +41,68 @@ function ReviewPayment(props) {
     return(
 
         <main className="main">
-            
-        <div className="shoppingcart-content">
+            <h3 className="main-h3">REVIEW PAYMENT</h3>
+        <div className="reviewpayment-content">
             
             
             <div className="list-content">
-                <div className="address-content">
-                    
-                    <div className="address-info">
+                <h4 className='review-content-text'>ADDRESS</h4>
+                <div className="addressreview-content">
+                   
+
+                    <div className="address-info-content" style={{maxWidth:500}}>
                         <label>Para</label>
                         <input value={addressInfo.name} readOnly></input>
                     </div>
 
-                    <div className="address-info">
-                        <label>cep</label>
-                        <input value={addressInfo.cep} readOnly></input>
+                    <div className="address-cep-estado-cidade">
+
+                        <div className="address-info-content" style={{width:200}}>
+                            <label>cep</label>
+                            <input value={addressInfo.cep} readOnly></input>
+                        </div>
+
+                        <div className="address-info-content" style={{width:100}}>
+                            <label>Estado</label>
+                            <input value={addressInfo.uf} readOnly></input>
+                        </div>
+
+                        <div className="address-info-content" style={{maxWidth:300}}>
+                            <label>Cidade</label>
+                            <input value={addressInfo.localidade} readOnly></input>
+                        </div>
+
                     </div>
 
-                    <div className="address-info">
-                        <label>Estado</label>
-                        <input value={addressInfo.uf} readOnly></input>
-                    </div>
+                    <div className="address-bairro-avenida-numero">
 
-                    <div className="address-info">
-                        <label>Cidade</label>
-                        <input value={addressInfo.localidade} readOnly></input>
-                    </div>
-
-                    <div className="address-info">
-                        <label>bairro</label>
-                        <input value={addressInfo.bairro} readOnly></input>
-                    </div>
-
-                    <div className="address-info">
-                        <label>Endereço</label>
-                        <input value={addressInfo.logradouro} readOnly></input>
-                    </div>
-
-                    <div className="address-info">
-                        <label>Numero</label>
-                        <input value={addressInfo.number} readOnly></input>
+                        <div className="address-info-content" style={{width:200}}>
+                            <label>bairro</label>
+                            <input value={addressInfo.bairro} readOnly></input>
+                        </div>
+                        
+                        <div className="address-info-content" style={{maxWidth:500}}>
+                            <label>Endereço</label>
+                            <input value={addressInfo.logradouro} readOnly></input>
+                        </div>
+                        
+                        <div className="address-info-content" style={{width:100}}>
+                            <label>Numero</label>
+                            <input value={addressInfo.number} readOnly></input>
+                        </div>
+        
                     </div>
                     
-                    <div className="address-info">
+                    <div className="address-info-content" style={{maxWidth:200}}>
                         <label>Telefone para contato</label>
                         <input value={addressInfo.phone} readOnly></input>
                     </div>
 
                 </div>
-
+                <h4 className="review-content-text">PRODUCTS</h4>
                 {cartItems.map( item => (
 
-                <div key={item.product} className="list-body">
+                <div key={item.product} className="list-body-review">
                     <div className="body-img">
                         <img src={item.image} alt="product"></img>
                     </div>
@@ -113,22 +123,33 @@ function ReviewPayment(props) {
             
 
             </div>
-
-            <div className="buy-items-content">
+            
+            <div className="review-content">
 
                 <h3>Finalizar Compra</h3>
-                <h4>Qtd items: {amount}</h4>
-                <h4>Preço Final: R$ {totalPrice}</h4>
 
-                {cartItems.length > 0 ?
+                <div className="review-qty">
+                    <label>Quantidade</label>
+                    <h4>{amount}</h4>
+                </div>
+
+                <div className="review-amount">
+                    <label>Preço Final:</label>
+                    <h4>R$ {totalPrice}</h4>
+                </div>
+                
+                <div className="paypal-button">
+                    {cartItems.length > 0 ?
 
                     userInfo ? 
                     <Paypal toPay={totalPrice} amount={amount} onSuccess={transactionSuccess} transactionError={transactionError} />
                     :
                     <button onClick={() => props.history.push('/signin')} className="button-buy">Comprar!</button>
+
+                    : <div></div>
+                    }
+                </div>
                 
-                : <div></div>
-                }
                 
 
             </div>
