@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import 'dotenv/config.js'
 
 const getToken = (user) => {
     return jwt.sign({
@@ -6,7 +7,7 @@ const getToken = (user) => {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-    }, 'somethingsecret', {
+    }, process.env.JWTSECRET, {
         expiresIn: '48h'
     })
 }

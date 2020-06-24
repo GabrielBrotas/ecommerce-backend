@@ -7,8 +7,11 @@ import mongoose from 'mongoose'
 import productsRouter from './routes/productsRouter.mjs'
 import usersRouter from './routes/usersRouter.mjs'
 import paymentsRouter from './routes/paymentsRouter.mjs'
+
+import 'dotenv/config.js'
+
 // database
-mongoose.connect('mongodb://localhost/products', {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -17,6 +20,7 @@ mongoose.connect('mongodb://localhost/products', {
 }).catch( err => {
     console.log('erro ao se conectar com o db: ' + err)
 })
+
 
 // bodyparser
 app.use(bodyParser.json())
@@ -32,7 +36,6 @@ app.use(function(req, res, next) {
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
 app.use('/payments', paymentsRouter)
-
 
 
 app.listen(8081, () => {
