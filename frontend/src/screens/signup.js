@@ -41,7 +41,7 @@ function Signup(props) {
         loading ? <div>loading...</div> :
         error ? <div>error... {error}</div> :
 
-        <main className="main">
+        <main className="main-user">
             
             <div className="user-content">
                 <h3 className="user-title">Sign up</h3>
@@ -66,7 +66,7 @@ function Signup(props) {
                         </li>
 
                         <li>
-                            <button className="admin-button">Cadastrar</button>
+                            <button className="button">Cadastrar</button>
                         </li>
 
 

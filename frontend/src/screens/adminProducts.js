@@ -79,9 +79,8 @@ function Admin(props) {
 
         userInfo && userInfo.isAdmin ? 
         
-        <main className="main-content">
+        <main className="main">
 
-            
             {showForm && 
             <div className="itemConfig-content">
                 <h3 className="itemConfig-title">
@@ -167,15 +166,12 @@ function Admin(props) {
 
                 <thead>
                     <tr>
-                        <th>_Id</th>
+
                         <th>Nome</th>
                         <th>Categoria</th>
-                        <th>Preço</th>
+                        <th>Preço (R$)</th>
                         <th>Qtd em Estoque</th>
-                        <th>Mais Vendidos?</th>
-                        <th>Carousel?</th>
                         <th>Descrição</th>
-                        <th>Imagem</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -183,15 +179,11 @@ function Admin(props) {
                 <tbody>
                     {products.map(product => (
                         <tr key={product._id}>
-                            <td>{product._id}</td>
                             <td>{product.name}</td>
                             <td>{product.category}</td>
                             <td>{product.price}</td>
                             <td>{product.countInStock}</td>
-                            <td>{product.bestseller ? <div>Sim</div> : <div>Nao</div>}</td>
-                            <td>{product.carousel ? <div>Sim</div> : <div>Nao</div>}</td>
                             <td className="tr-description">{product.description}</td>
-                            <td>{product.image}</td>
                             <td>
                                 <button className="edit-button" onClick={() => openForm(product)}>Editar</button>
                                 <button className="delete-button" onClick={ () => deleteHandler(product._id)}>Deletar</button>

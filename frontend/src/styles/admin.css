@@ -1,14 +1,28 @@
-
-.main-content{
-    margin: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+.main{
+    margin: 10rem 2rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    
 }
-
+.admin-content{
+    margin-top: 10rem;
+    width: 100%;
+}
+.compras-info-content{
+    margin-left: 5rem;
+    margin-right: 5rem;
+    color: #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.compras-info-content h2{
+    margin-left: 0;
+}
 .newItemDiv{
     margin-bottom: 2rem;
 }
+
 .newItem {
 	box-shadow:inset 0px 1px 0px 0px #54a3f7;
 	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
@@ -31,11 +45,17 @@
 
 .admin-table{
     border-collapse: collapse;
-    width: 100%;
+    margin: 5rem;
 }
 
+@media screen and (max-width: 550px){
+    .admin-table{
+        font-size: xx-small;
+    }
+}
 .admin-table th{
     text-align-last: center;
+    
 }
 .admin-table tr {
     text-align: center;
@@ -55,10 +75,10 @@
 .admin-table th {
 padding-top: 12px;
 padding-bottom: 12px;
-text-align: left;
-background-color: #067eca;
+text-align: center;
+background-color: #0078f2;
 font-weight: normal;
-color: white;
+color: #fff;
 }
 
 .delete-button {

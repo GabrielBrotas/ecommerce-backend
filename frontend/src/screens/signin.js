@@ -45,7 +45,7 @@ function Signin(props) {
         loading ? <div>Loading...</div> :
         
 
-        <main className="main">
+        <main className="main-user">
             
             <div className="user-content">
                 <h3 className="user-title">Sign in</h3>
@@ -55,23 +55,24 @@ function Signin(props) {
                     <ul className="user-form">
                         {error && <li>{error}</li>}
                         <li>
-                            <label htmlFor="email">Email</label>
                             <input value={email} onChange={(e) => setEmail(e.target.value)} name="email" type="email" placeholder="Email..." required></input>
                         </li>
 
                         <li>
-                            <label htmlFor="password">Password</label>
                             <input value={password} onChange={(e) => setPassword(e.target.value)} name="password" type="password" placeholder="Password..." required></input>
                         </li>
 
                         <li>
-                            <button className="admin-button">Sign in</button>
+                            <button className="button">Sign in</button>
                         </li>
 
                         <li>
                             <div className="link-register">
                             <p>Ainda não tem uma conta?</p>
-                            <Link to="/signup">Cadastre-se</Link>
+                            <div className="link-cadastrar">
+
+                            </div>
+                            <Link to="/signup" style={{ textDecoration: 'none', color:'#fff', cursor:'pointer', fontWeight:'600' }}> Cadastre-se &#10095;&#10095; </Link>
                             </div>
                         </li>
 

@@ -30,7 +30,7 @@ function Sales(props){
         loading ? <div>Loading...</div> :
         userInfo && userInfo.isAdmin ? 
         
-        <main className="main-content">
+        <main className="main">
 
             <table className="admin-table">
 

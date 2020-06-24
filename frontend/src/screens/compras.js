@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {listPayments} from '../actions/productActions'
+import '../styles/admin.css'
 
 function Compras(props){
 
@@ -32,17 +33,19 @@ function Compras(props){
         error ? <div>Erro: {error} </div> 
         :
  
-        <main className="main-content">
-
+        <main className="main">
+            <div className="compras-info-content">
+                <h2>PAYMENT HISTORY</h2>
+            </div>
             <table className="admin-table">
 
                 <thead>
                     <tr>
-                        <th>PaymentID</th>
+                        <th>Data</th>
                         <th>Produto</th>
                         <th>Quantidade</th>
-                        <th>Preço Total</th>
-                        <th>Data</th>
+                        <th>Preço</th>
+
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -50,11 +53,10 @@ function Compras(props){
                 <tbody>
                     {payments.map(payment => (
                         <tr key={payment._id}>
-                            <td>{payment.paymentId}</td>
+                            <td>{payment.date}</td>
                             <td>{payment.product}</td>
                             <td>{payment.amount}</td>
                             <td>R$ {payment.totalPrice}</td>
-                            <td>{payment.date}</td>
                             <td>{!payment.delivered ? 'Pendente' : 'Entregue'}</td>
                         </tr>
                     ))} 
