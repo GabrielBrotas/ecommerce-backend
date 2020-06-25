@@ -1,14 +1,14 @@
-import express from 'express'
+const express = require('express')
 const router = express.Router()
 
 // model
-import User from '../models/Users.mjs'
+const User = require('../models/Users.js')
 
 // bcrypt para gerar hash da senha
-import bcrypt from 'bcryptjs'
+const bcrypt = require('bcryptjs')
 
 // helpers
-import { getToken } from '../helper.mjs'
+const { getToken } = require('../helper.js')
 
 router.get('/', async (req, res) => {
 
@@ -95,4 +95,4 @@ router.post('/register', async (req, res) => {
 
 
 
-export default router
+module.exports = router

@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken'
-import 'dotenv/config.js'
+const jwt = require('jsonwebtoken')
+require('dotenv/config.js')
 
 const getToken = (user) => {
     return jwt.sign({
@@ -12,4 +12,4 @@ const getToken = (user) => {
     })
 }
 
-export {getToken}
+module.exports = {getToken}

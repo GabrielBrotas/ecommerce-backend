@@ -1,8 +1,7 @@
-import express from 'express'
-import User from '../models/Users.mjs'
-import Payment from '../models/Payments.mjs'
-import Product from '../models/Products.mjs'
-
+const express = require('express')
+const User = require('../models/Users.js')
+const Payment = require('../models/Payments.js')
+const Product = require('../models/Products.js')
 
 const router = express.Router()
 const now = new Date
@@ -89,5 +88,4 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-
-export default router
+module.exports = router

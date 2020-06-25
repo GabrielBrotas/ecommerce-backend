@@ -1,5 +1,5 @@
-import express from 'express'
-import Product from '../models/Products.mjs'
+const express = require('express')
+const Product = require('../models/Products.js')
 const router = express.Router()
 
 
@@ -143,4 +143,4 @@ router.delete('/:id', async (req, res) => {
 
 
 
-export default router
+module.exports = router

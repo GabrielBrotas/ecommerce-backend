@@ -1,14 +1,14 @@
 
-import express from 'express'
+const express = require('express')
 const app = express()
-import bodyParser from 'body-parser'
-import mongoose from 'mongoose'
+const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
-import productsRouter from './routes/productsRouter.mjs'
-import usersRouter from './routes/usersRouter.mjs'
-import paymentsRouter from './routes/paymentsRouter.mjs'
+const productsRouter = require('./routes/productsRouter.js')
+const usersRouter = require('./routes/usersRouter.js')
+const paymentsRouter = require('./routes/paymentsRouter.js')
 
-import 'dotenv/config.js'
+require('dotenv/config.js')
 
 // database
 mongoose.connect(process.env.DATABASE_URL, {
@@ -27,7 +27,7 @@ app.use(bodyParser.json())
 
 // config do CORS para permitir requisicoes
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request =
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', '*');
     next();

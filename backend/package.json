@@ -14,7 +14,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon --exec babel-node server.js",
+    "start": "nodemon server.js",
     "debug": "babel-node debug server.js"
   },
   "author": "",
