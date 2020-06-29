@@ -3,11 +3,13 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const path = require('path')
 
 // rotas
-const productsRouter = require('./routes/productsRouter.js')
-const usersRouter = require('./routes/usersRouter.js')
-const paymentsRouter = require('./routes/paymentsRouter.js')
+const productsRouter = require('./routes/productsRouter')
+const usersRouter = require('./routes/usersRouter')
+const paymentsRouter = require('./routes/paymentsRouter')
+const morgan = require('morgan')
 
 // dotenv
 require('dotenv/config')
@@ -16,10 +18,14 @@ require('dotenv/config')
 
     app.use(express.json()) // lidar com formatos json
     app.use(express.urlencoded({extended: true})) // lidar com requisições do tipo url
+    app.use(morgan('dev'))
 
-
+    // static do express
+    // sempre que formos acessar uma rota /files / alguma coisa, ele vai tentar encontrar o arquivo dentro da pasta /tmp/uploads, ex :http://localhost:8081/files/6f572025c178ccb642f30d2a76f983d2-acessorio1.jpg.jpg
+    app.use('/files', express.static(path.resolve(__dirname, '..', 'tmp', 'uploads')))
+    
     // database
-    mongoose.connect(process.env.DATABASE_URL, {
+    mongoose.connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,

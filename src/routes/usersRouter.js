@@ -2,13 +2,13 @@ const express = require('express')
 const router = express.Router()
 
 // model
-const User = require('../models/Users.js')
+const User = require('../models/Users')
 
 // bcrypt para gerar hash da senha
 const bcrypt = require('bcryptjs')
 
 // helpers
-const { getToken } = require('../helper.js')
+const { getToken } = require('../helper')
 
 router.get('/', async (req, res) => {
 

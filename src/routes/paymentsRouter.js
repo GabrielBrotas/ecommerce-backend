@@ -1,7 +1,7 @@
 const express = require('express')
-const User = require('../models/Users.js')
-const Payment = require('../models/Payments.js')
-const Product = require('../models/Products.js')
+const User = require('../models/Users')
+const Payment = require('../models/Payments')
+const Product = require('../models/Products')
 
 const router = express.Router()
 const now = new Date

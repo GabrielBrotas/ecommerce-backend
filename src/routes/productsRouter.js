@@ -1,6 +1,12 @@
 const express = require('express')
-const Product = require('../models/Products.js')
 const router = express.Router()
+
+//models
+const Product = require('../models/Products')
+
+//libraries
+const multer = require('multer')
+const multerConfig = require('../config/multer')
 
 
 function checkPagination(page, limit, model){
@@ -71,29 +77,32 @@ router.get('/id/:id', async (req, res) => {
 })
 
 
-router.post('/', async (req, res) => {
+router.post('/', multer(multerConfig).single('file'),async (req, res) => {
 
-    try{
-        const product = new Product({
-            name: req.body.name, 
-            price: req.body.price, 
-            image: req.body.image, 
-            category: req.body.category, 
-            countInStock: req.body.countInStock, 
-            description: req.body.description, 
-            bestseller: req.body.bestseller, 
-            carousel: req.body.carousel, 
-        })
-    
-        const newProduct = await product.save()
-    
-        if(newProduct){
-            return res.status(200).send({message: 'new product created', data: newProduct})
-        }
+    // const {name, price, image, category, countInStock, description, bestseller, carousel} = req.body
 
-    } catch(error) {
-        return res.status(500).send({message: 'error in create new product'})
-    }
+    console.log(req.file)
+    // try{
+    //     const product = new Product({
+    //         name, 
+    //         price, 
+    //         image, 
+    //         category, 
+    //         countInStock, 
+    //         description, 
+    //         bestseller, 
+    //         carousel, 
+    //     })
+    
+    //     const newProduct = await product.save()
+    
+    //     if(newProduct){
+    //         return res.status(200).send({message: 'new product created', data: newProduct})
+    //     }
+
+    // } catch(error) {
+    //     return res.status(500).send({message: 'error in create new product'})
+    // }
     
 })
 
