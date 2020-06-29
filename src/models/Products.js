@@ -10,7 +10,7 @@ const productsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    key: {
+    key: {  // key da imagem
         type: String,
         required: true
     },
