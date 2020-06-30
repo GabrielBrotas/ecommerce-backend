@@ -1,6 +1,7 @@
 const multer = require('multer')
 const path = require('path')
 const crypto = require('crypto')
+require('dotenv').config()
 
 // provider para o multer que vai permitir fazer o storage na aws ao inves do local
 const multerS3 = require('multer-s3')
@@ -10,7 +11,7 @@ const aws = require('aws-sdk')
 
 // tipos de storage 
 const storageTypes = {
-
+    
     // tipo local (para ambiente de desenvolvimento)
     local: multer.diskStorage({
         // destino novamente
@@ -25,7 +26,6 @@ const storageTypes = {
                 // console.log(file)
                 // se nao tiver erro.. mudar o nome da imagem com hash na frente
                 file.key = `${hash.toString('hex')}-${file.originalname}`
-
                 cb(null, file.key)
             })
         }
@@ -47,9 +47,11 @@ const storageTypes = {
                 if(err) cb(err);
                 // console.log(file)
                 // se nao tiver erro.. mudar o nome da imagem com hash na frente
-                const filename = `${hash.toString('hex')}-${file.originalname}.jpg`
-
+                
                 cb(null, filename)
+                const filename = `${hash.toString('hex')}-${file.originalname}`
+
+                
             })
         }
     })
@@ -80,7 +82,7 @@ module.exports ={
             'image/png',
             'image/gif',
         ]
-
+        
         // se o arquivo passado estiver na lista de arquivos permitidos
         if (allowedMimes.includes(file.mimetype)) {
             cb(null, true);

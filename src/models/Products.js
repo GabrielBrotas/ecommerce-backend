@@ -6,11 +6,7 @@ const productsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image: { // url em que a imagem está contida
-        type: String,
-        required: true
-    },
-    key: {  // key da imagem
+    file: { // url em que a imagem está contida
         type: String,
         required: true
     },
@@ -48,8 +44,8 @@ const productsSchema = new mongoose.Schema({
 // function() ao inves de arrow function pois vamos precisar do 'this' e a arrow function nao permite ter acesso
 productsSchema.pre('save', function() {
     // se a imagem nao ter url
-    if(!this.imageUrl){
-        this.url = `${process.env.APP_URL}/files/${this.key}`
+    if(!this.image){
+        this.image = `${process.env.APP_URL}/files/${this.key}`
     }
 })
 

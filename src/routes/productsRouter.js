@@ -79,16 +79,13 @@ router.get('/id/:id', async (req, res) => {
 
 router.post('/', multer(multerConfig).single('file'),async (req, res) => {
 
-    const {name, price, image, category, countInStock, description, bestseller, carousel} = req.body
-    
-    const {size, key, location: url = '' = req.file}
-    
+    const {name, price, category, countInStock, description, bestseller, carousel} = req.body
+    const {location: url = ''} = req.file
     try{
         const product = new Product({
             name, 
+            file: url,
             price, 
-            image: url,
-            key, 
             category, 
             countInStock, 
             description, 
@@ -96,15 +93,16 @@ router.post('/', multer(multerConfig).single('file'),async (req, res) => {
             carousel, 
         })
         
-        return res.json(product)
-        // const newProduct = await product.save()
+        
+        const newProduct = await product.save()
     
-        // if(newProduct){
-        //     return res.status(200).send({message: 'new product created', data: newProduct})
-        // }
+        if(newProduct){
+            return res.status(200).send({message: 'new product created', data: newProduct})
+        }
 
     } catch(error) {
-        return res.status(500).send({message: 'error in create new product'})
+        console.log('erro = ' + error)
+        // return res.status(500).send({message: 'error in create new product'})
     }
     
 })

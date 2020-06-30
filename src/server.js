@@ -12,7 +12,7 @@ const paymentsRouter = require('./routes/paymentsRouter')
 const morgan = require('morgan')
 
 // dotenv
-require('dotenv/config')
+require('dotenv').config()
 
 // configs
 
