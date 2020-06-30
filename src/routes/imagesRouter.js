@@ -39,7 +39,7 @@ router.post('/', multer(multerConfig).single('file'),async (req, res) => {
 
 
 router.delete('/:id', async (req, res) => {
-    const image = await Image.findById(req.params.id)
+    const image = await Image.findOne({key: req.params.id})
     await image.remove()
     return res.send()
 })

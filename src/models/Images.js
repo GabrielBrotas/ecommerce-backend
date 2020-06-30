@@ -35,5 +35,23 @@ ImageSchema.pre('save', function() {
 
 })
 
+// antes de remover um post
+ImageSchema.pre('remove', function() {
+    // remover da aws
+    if(process.env.STORAGE_TYPE === 's3'){
+        // .promise é tipo um await, vai esperar a promise finalizar para retornar
+        return s3.deleteObject({
+            Bucket: 'upload-example-rocketseat-node',
+            // deletar na bucket onde a key é igual a this.key
+            Key: this.key
+        }).promise()
+    } else {
+        // remover do local
+        console.log('ok')
+        return promisify(fs.unlink)(path.resolve(__dirname, '..', '..', 'tmp', 'uploads', this.key))
+    }
+  
+})
+
 
 module.exports = mongoose.model('Image', ImageSchema)

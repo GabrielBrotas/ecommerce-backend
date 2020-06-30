@@ -76,11 +76,13 @@ router.get('/id/:id', async (req, res) => {
 router.post('/', async (req, res) => {
 
     try{
-        const {name, price, category, countInStock, description, bestseller, carousel} = req.body
+        const {name, price, fileUrl, key, category, countInStock, description, bestseller, carousel} = req.body
 
         const product = new Product({
             name, 
-            price, 
+            price,
+            fileUrl,
+            key, 
             category, 
             countInStock, 
             description, 

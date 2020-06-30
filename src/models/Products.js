@@ -9,6 +9,9 @@ const productsSchema = new mongoose.Schema({
     fileUrl: { // url em que a imagem está contida
         type: String,
     },
+    key: {
+        type: String,
+    },
     price: {
         type: Number,
         default: 0,
