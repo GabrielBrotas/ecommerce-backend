@@ -4,12 +4,13 @@ const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path')
-
+const morgan = require('morgan')
 // rotas
 const productsRouter = require('./routes/productsRouter')
 const usersRouter = require('./routes/usersRouter')
 const paymentsRouter = require('./routes/paymentsRouter')
-const morgan = require('morgan')
+const imagesRouter = require('./routes/imagesRouter')
+
 
 // dotenv
 require('dotenv').config()
@@ -50,7 +51,7 @@ require('dotenv').config()
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
 app.use('/payments', paymentsRouter)
-
+app.use('/uploads', imagesRouter)
 
 app.listen(8081, () => {
     console.log('API running in http://localhost:8081')

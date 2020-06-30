@@ -3,11 +3,6 @@ const router = express.Router()
 
 //models
 const Product = require('../models/Products')
-const Image = require('../models/Images')
-
-//libraries
-const multer = require('multer')
-const multerConfig = require('../config/multer')
 
 
 function checkPagination(page, limit, model){
@@ -106,30 +101,6 @@ router.post('/', async (req, res) => {
     
 })
 
-
-router.post('/upload', multer(multerConfig).single('file'),async (req, res) => {
-
-    try{
-    
-        const {originalname: name, size, key, location: url = ''} = req.file
-
-        const imageUpload = new Image({
-            name, 
-            size,
-            key,
-            url 
-        })
-
-        const newImageUpload = await imageUpload.save()
-
-        return res.send(imageUpload)
-
-    } catch(error) {
-        console.log('erro = ' + error)
-        return res.status(500).send({message: 'error in save image'})
-    }
-    
-})
 
 
 router.put('/:id', async (req, res) => {
