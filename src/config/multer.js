@@ -21,6 +21,7 @@ const storageTypes = {
         // evitar nome repetido colocando um hash na frente do nome
         filename: (req, file, cb) => {
             crypto.randomBytes(16, (err, hash) => {
+    
                 // caso der algum erro vamos trata-lo no cb
                 if(err) cb(err);
                 // console.log(file)
@@ -28,7 +29,8 @@ const storageTypes = {
                 file.key = `${hash.toString('hex')}-${file.originalname}`
                 cb(null, file.key)
             })
-        }
+        },
+        
     }),
     // ambiente de produção
     s3: multerS3({

@@ -6,9 +6,8 @@ const productsSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    file: { // url em que a imagem está contida
+    fileUrl: { // url em que a imagem está contida
         type: String,
-        required: true
     },
     price: {
         type: Number,
@@ -36,16 +35,6 @@ const productsSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
-})
-
-// interceptar acoes do banco de dados (middlaware), verificar se a url esta vazia (querendo salvar no disco), se estiver vamos preencher com a url do static.
-// pre('save') = antes de salvar
-// function() ao inves de arrow function pois vamos precisar do 'this' e a arrow function nao permite ter acesso
-productsSchema.pre('save', function() {
-    // se a imagem nao ter url
-    if(!this.image){
-        this.image = `${process.env.APP_URL}/files/${this.key}`
     }
 })
 

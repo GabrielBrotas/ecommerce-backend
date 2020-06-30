@@ -3,6 +3,7 @@ const router = express.Router()
 
 //models
 const Product = require('../models/Products')
+const Image = require('../models/Images')
 
 //libraries
 const multer = require('multer')
@@ -77,14 +78,13 @@ router.get('/id/:id', async (req, res) => {
 })
 
 
-router.post('/', multer(multerConfig).single('file'),async (req, res) => {
+router.post('/', async (req, res) => {
 
-    const {name, price, category, countInStock, description, bestseller, carousel} = req.body
-    const {location: url = ''} = req.file
     try{
+        const {name, price, category, countInStock, description, bestseller, carousel} = req.body
+
         const product = new Product({
             name, 
-            file: url,
             price, 
             category, 
             countInStock, 
@@ -92,7 +92,6 @@ router.post('/', multer(multerConfig).single('file'),async (req, res) => {
             bestseller, 
             carousel, 
         })
-        
         
         const newProduct = await product.save()
     
@@ -102,7 +101,32 @@ router.post('/', multer(multerConfig).single('file'),async (req, res) => {
 
     } catch(error) {
         console.log('erro = ' + error)
-        // return res.status(500).send({message: 'error in create new product'})
+        return res.status(500).send({message: 'error in create new product'})
+    }
+    
+})
+
+
+router.post('/upload', multer(multerConfig).single('file'),async (req, res) => {
+
+    try{
+    
+        const {originalname: name, size, key, location: url = ''} = req.file
+
+        const imageUpload = new Image({
+            name, 
+            size,
+            key,
+            url 
+        })
+
+        const newImageUpload = await imageUpload.save()
+
+        return res.send(imageUpload)
+
+    } catch(error) {
+        console.log('erro = ' + error)
+        return res.status(500).send({message: 'error in save image'})
     }
     
 })
