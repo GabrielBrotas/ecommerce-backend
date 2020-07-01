@@ -111,16 +111,19 @@ router.put('/:id', async (req, res) => {
         const id = req.params.id
     
         const product = await Product.findById(id)
-    
+        const {name, price, fileUrl, key, image, category, countInStock, description, bestseller, carousel} = req.body
+
         if(product){
-            product.name = req.body.name;
-            product.price = req.body.price;
-            product.image = req.body.image;
-            product.category = req.body.category;
-            product.countInStock = req.body.countInStock;
-            product.description = req.body.description; 
-            product.bestseller= req.body.bestseller;
-            product.carousel= req.body.carousel;
+            product.name = name;
+            product.price = price;
+            product.fileUrl = fileUrl;
+            product.key = key;
+            product.image = image;
+            product.category = category;
+            product.countInStock = countInStock;
+            product.description = description; 
+            product.bestseller= bestseller;
+            product.carousel= carousel;
     
             const updatedProduct = await product.save()
     
@@ -136,9 +139,9 @@ router.put('/:id', async (req, res) => {
 })
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:key', async (req, res) => {
 
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findOne({key: req.params.key})
 
     if(product){
         await product.remove()
