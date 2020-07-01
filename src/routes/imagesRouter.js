@@ -3,7 +3,6 @@ const router = express.Router()
 
 // model
 const Image = require('../models/Images')
-const Product = require('../models/Products')
 
 //libraries
 const multer = require('multer')
@@ -37,7 +36,6 @@ router.post('/', multer(multerConfig).single('file'),async (req, res) => {
     }
     
 })
-
 
 
 router.delete('/:key', async (req, res) => {

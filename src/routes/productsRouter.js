@@ -140,9 +140,7 @@ router.put('/:id', async (req, res) => {
 
 
 router.delete('/:key', async (req, res) => {
-
     const product = await Product.findOne({key: req.params.key})
-
     if(product){
         await product.remove()
         res.send({message: 'product deleted'})
