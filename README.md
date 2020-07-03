@@ -5,9 +5,9 @@
   
 ## Libraries
 
-  express
-  body-parser
-  jsonwebtoken 
+  express;
+  body-parser;
+  jsonwebtoken ;
   dotenv
   bcryptjs  # gerar senhas hash para os usuarios
   mongoose  # se conectar com o mongodb
