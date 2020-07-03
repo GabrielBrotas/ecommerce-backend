@@ -9,11 +9,11 @@
   body-parser; </br>
   jsonwebtoken; </br>
   dotenv; </br>
-  bcryptjs;  # gerar senhas hash para os usuarios </br>
-  mongoose;  # se conectar com o mongodb </br>
-  morgan  ;  # HTTP request logger middleware </br>
-  multer;    # Permitir enviar arquivos para fazer upload </br>
-  multer-s3; # Criar conexao com o servidor da aws -3 </br>
-  aws-sdk;   # Servidor da amazon </br>
+  bcryptjs;  &nbsp   # gerar senhas hash para os usuarios </br>
+  mongoose;     # se conectar com o mongodb </br>
+  morgan  ;     # HTTP request logger middleware </br>
+  multer;       # Permitir enviar arquivos para fazer upload </br>
+  multer-s3;    # Criar conexao com o servidor da aws -3 </br>
+  aws-sdk;      # Servidor da amazon </br>
  
   
