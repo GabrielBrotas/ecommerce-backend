@@ -9,7 +9,7 @@
   body-parser; </br>
   jsonwebtoken; </br>
   dotenv; </br>
-  bcryptjs;  &nbsp   # gerar senhas hash para os usuarios </br>
+  bcryptjs;     # gerar senhas hash para os usuarios </br>
   mongoose;     # se conectar com o mongodb </br>
   morgan  ;     # HTTP request logger middleware </br>
   multer;       # Permitir enviar arquivos para fazer upload </br>
